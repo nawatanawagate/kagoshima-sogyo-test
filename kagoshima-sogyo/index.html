@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-/nFfo7Mhg+39OBAmtgIjbLjOjCJQo37h2CS0b+xjvQs='; script-src 'sha256-OVhDdL3OLSjEZ36W7SLV/SBR7qQOfj3CIF03BnWHzR8='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-VlucxVXNtjDqgF/wpNOp0wO9/CiEv5WpZ/Np9c8UKVk='; script-src 'sha256-OVhDdL3OLSjEZ36W7SLV/SBR7qQOfj3CIF03BnWHzR8='; img-src data:; base-uri 'none'; form-action 'none'">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%23C2410C'/%3E%3Ctext%20x='16'%20y='22'%20font-size='16'%20text-anchor='middle'%20fill='white'%20font-family='serif'%3EAI%3C/text%3E%3C/svg%3E">
 <title>AI活用プロンプト集｜鹿児島市 創業スキル養成講座 第2回</title>
 <style>
@@ -91,6 +91,32 @@
   .howto b{color:var(--ink)}
   .howto .warn b{color:var(--ember)}
   .howto .em{color:var(--ember);font-weight:700}
+
+  /* ===== AIを使う上での注意 ===== */
+  .caution{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    box-shadow:var(--shadow);padding:24px 24px;margin:0 0 38px;
+  }
+  .caution h2{
+    font-family:var(--serif);font-size:18px;font-weight:700;
+    display:flex;align-items:center;gap:10px;margin-bottom:12px;
+  }
+  .caution h2 .warnico{
+    flex:none;width:24px;height:24px;border-radius:50%;background:var(--ember);
+    color:#fff;font-weight:800;font-size:15px;display:grid;place-items:center;
+  }
+  .caution .crow{display:flex;gap:12px;font-size:14px;padding:12px 0;
+    border-top:1px solid var(--line);align-items:flex-start}
+  .caution .crow:first-of-type{border-top:none;padding-top:2px}
+  .caution .ctag{
+    flex:none;font-size:12px;font-weight:700;color:#fff;background:var(--ember);
+    padding:4px 9px;border-radius:7px;margin-top:2px;min-width:62px;text-align:center;
+  }
+  .caution .crow b{color:var(--ink)}
+  .caution .cnote{
+    margin-top:14px;padding-top:13px;border-top:1px dashed var(--line);
+    font-size:13.5px;font-weight:700;color:var(--ember);
+  }
 
   /* ===== Section nav ===== */
   nav.jump{
@@ -283,6 +309,15 @@
       <li><span><b>会話は「続けて」つなげる。</b>　3C → SWOT → クロスSWOT のように、同じ会話の中で続けて質問すると、AIが文脈を引き継ぎます。</span></li>
       <li class="warn"><span><b>数字は鵜呑みにしない（最重要）。</b>　AIはそれっぽい数字を作ることがあります。「その数字、1日あたり何件？」「出典は？」と必ず確認を。</span></li>
     </ol>
+  </div>
+
+  <!-- AIを使う上での注意 -->
+  <div class="caution">
+    <h2><span class="warnico">!</span>AIを使う上での注意</h2>
+    <div class="crow"><span class="ctag">情報漏洩</span><div>会社の機密、<b>個人情報・顧客名簿</b>などはそのまま入力しない。固有名詞は伏せ、一般化した条件で質問しましょう。</div></div>
+    <div class="crow"><span class="ctag">著作権</span><div>生成物は<b>そのまま使わず、確認・修正</b>してから使う。他人の文章・画像の丸写しや、権利が不明な素材は避けましょう。</div></div>
+    <div class="crow"><span class="ctag">虚偽情報</span><div>AIは「それらしい間違い」をします。数字や事実は<b>出典を確認し、必ず自分で裏取り</b>してから使いましょう。</div></div>
+    <div class="cnote">迷ったら「入力しない・載せない」。最終的な判断は、必ずご自身で。</div>
   </div>
 </div>
 
