@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-VlucxVXNtjDqgF/wpNOp0wO9/CiEv5WpZ/Np9c8UKVk='; script-src 'sha256-OVhDdL3OLSjEZ36W7SLV/SBR7qQOfj3CIF03BnWHzR8='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-E6rd4d31ZTbuEUwn5AQdE+4zekzESSitAJoy6FfGJHk='; script-src 'sha256-EK/yEd74OeHcowW02ap6tc3t6sZHo5Av9t5NN27f0aM='; img-src data:; base-uri 'none'; form-action 'none'">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%23C2410C'/%3E%3Ctext%20x='16'%20y='22'%20font-size='16'%20text-anchor='middle'%20fill='white'%20font-family='serif'%3EAI%3C/text%3E%3C/svg%3E">
 <title>AI活用プロンプト集｜鹿児島市 創業スキル養成講座 第2回</title>
 <style>
@@ -118,39 +118,35 @@
     font-size:13.5px;font-weight:700;color:var(--ember);
   }
 
-  /* ===== Section nav ===== */
-  nav.jump{
-    position:sticky;top:0;z-index:20;background:rgba(251,247,241,.92);
-    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
-    display:flex;gap:8px;padding:11px 20px;justify-content:center;flex-wrap:wrap;
-  }
-  nav.jump a{
-    text-decoration:none;font-size:13px;font-weight:700;color:var(--muted);
-    padding:7px 15px;border-radius:999px;border:1px solid var(--line);background:#fff;
-    transition:.2s;
-  }
-  nav.jump a:hover{color:var(--ink);border-color:var(--ink)}
-  nav.jump a.t-bay:hover{color:var(--bay);border-color:var(--bay)}
-  nav.jump a.t-em:hover{color:var(--ember);border-color:var(--ember)}
-  .menubtn{
+  /* ===== 目次ボタン（右上・固定 FAB） ===== */
+  .menufab{
+    position:fixed;top:max(14px,env(safe-area-inset-top));right:14px;z-index:55;
     display:inline-flex;align-items:center;gap:7px;cursor:pointer;
-    font-family:inherit;font-size:13px;font-weight:700;color:#fff;background:var(--ink);
-    border:1px solid var(--ink);padding:7px 15px 7px 13px;border-radius:999px;transition:.2s;
+    font-family:inherit;font-size:13px;font-weight:700;color:#fff;background:var(--ember);
+    border:none;padding:9px 16px 9px 13px;border-radius:999px;
+    box-shadow:0 4px 14px rgba(28,24,18,.30);transition:transform .18s,background .2s;
   }
-  .menubtn:hover{background:#000}
-  .menubtn svg{width:16px;height:16px}
+  .menufab:hover{background:#A8370A;transform:translateY(-1px)}
+  .menufab svg{width:17px;height:17px}
+
+  /* ===== 精度UPのコツ ===== */
+  .tip{display:flex;gap:10px;background:var(--bay-soft);border-radius:12px;
+    padding:12px 14px;margin-top:14px;font-size:13px;line-height:1.7;color:#27433F}
+  .tip .tipl{flex:none;font-size:11px;font-weight:700;color:#fff;background:var(--bay);
+    padding:3px 8px;border-radius:6px;height:fit-content;margin-top:1px;letter-spacing:.03em}
+  .tip b{color:var(--bay);font-weight:700}
 
   /* ===== Menu（サイドドロワー） ===== */
   .menu{position:fixed;inset:0;z-index:60;background:rgba(28,24,18,.5);
     opacity:0;transition:opacity .26s ease}
   .menu.open{opacity:1}
   .menu-panel{
-    position:absolute;top:0;left:0;bottom:0;
+    position:absolute;top:0;right:0;bottom:0;
     width:min(86vw,360px);background:var(--card);
     box-shadow:0 0 60px rgba(28,24,18,.45);
-    border-radius:0 20px 20px 0;
+    border-radius:20px 0 0 20px;
     display:flex;flex-direction:column;
-    transform:translateX(-102%);transition:transform .3s cubic-bezier(.33,1,.68,1);
+    transform:translateX(102%);transition:transform .3s cubic-bezier(.33,1,.68,1);
   }
   .menu.open .menu-panel{transform:translateX(0)}
   .menu-head{
@@ -209,7 +205,7 @@
   }
 
   /* ===== Section heading ===== */
-  .sec{margin:46px 0 8px;display:flex;align-items:baseline;gap:14px;scroll-margin-top:64px}
+  .sec{margin:46px 0 8px;display:flex;align-items:baseline;gap:14px;scroll-margin-top:24px}
   .sec .badge{
     font-family:var(--serif);font-size:13px;font-weight:700;color:#fff;
     padding:5px 13px;border-radius:8px;letter-spacing:.05em;white-space:nowrap;
@@ -222,7 +218,7 @@
   /* ===== Prompt card ===== */
   .card{
     background:var(--card);border:1px solid var(--line);border-radius:16px;
-    box-shadow:var(--shadow);padding:22px 22px 24px;margin-bottom:20px;scroll-margin-top:64px;
+    box-shadow:var(--shadow);padding:22px 22px 24px;margin-bottom:20px;scroll-margin-top:24px;
   }
   .card .head{display:flex;align-items:flex-start;gap:13px;margin-bottom:6px}
   .card .num{
@@ -264,7 +260,7 @@
   .copybtn svg{width:16px;height:16px}
 
   /* ===== Magic phrases ===== */
-  .magic{background:#1C1812;color:#F5EFE6;border-radius:18px;padding:28px 24px;margin:44px 0 0;scroll-margin-top:64px}
+  .magic{background:#1C1812;color:#F5EFE6;border-radius:18px;padding:28px 24px;margin:44px 0 0;scroll-margin-top:24px}
   .magic h2{font-family:var(--serif);font-size:19px;margin-bottom:6px}
   .magic p.lead{font-size:13.5px;color:#C9BCab;margin-bottom:18px}
   .magic .m{display:flex;gap:12px;padding:12px 0;border-top:1px solid rgba(255,255,255,.1);align-items:flex-start}
@@ -321,15 +317,6 @@
   </div>
 </div>
 
-<!-- Jump nav -->
-<nav class="jump">
-  <button id="menuBtn" class="menubtn" aria-expanded="false" aria-controls="menu" aria-label="目次を開く">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>目次
-  </button>
-  <a href="#research" class="t-bay">② リサーチ</a>
-  <a href="#strategy" class="t-em">③ 戦略</a>
-</nav>
-
 <div class="wrap">
 
   <!-- ===== RESEARCH ===== -->
@@ -364,6 +351,8 @@
 ■ 出力形式
 4項目それぞれを見出しにした箇条書き＋最後にまとめ表</pre>
     <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  
+    <div class="tip"><span class="tipl">精度UP</span><div>業種は具体的に（「ラーメン店」→「無化調にこだわる家系ラーメン店」）。<b>開業時期・規模（席数や一人開業か）</b>も添えると、関係する法規制や流行が絞り込まれます。</div></div>
   </article>
 
   <!-- 2 3C -->
@@ -391,6 +380,8 @@
 ■ 出力形式
 3観点の表 ＋ 最後に「とるべき立ち位置」の結論</pre>
     <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  
+    <div class="tip"><span class="tipl">精度UP</span><div><b>町名まで</b>入れると商圏が変わります。客層の仮説（例：近隣会社員のランチ需要）や<b>競合店の名前・特徴</b>も書くと、立ち位置がはっきりします。</div></div>
   </article>
 
   <!-- 3 SWOT -->
@@ -416,6 +407,8 @@
 ■ 出力形式
 2×2のSWOTマトリクス（表）</pre>
     <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  
+    <div class="tip"><span class="tipl">精度UP</span><div>3C分析に続けて聞くのがコツ。<b>自分の経験年数・資格・人脈・自己資金</b>など事実を具体的に渡すほど、的を射た強み・弱みになります。</div></div>
   </article>
 
   <!-- 4 クロスSWOT -->
@@ -441,6 +434,8 @@
 ■ 出力形式
 4象限の表 ＋ 最優先戦略の結論</pre>
     <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  
+    <div class="tip"><span class="tipl">精度UP</span><div><b>何を最優先したいか（売上重視／低リスク重視 など）</b>を一言添えると、戦略の優先順位が自分の状況に合います。</div></div>
   </article>
 
   <!-- 5 市場規模 -->
@@ -467,6 +462,8 @@
 ■ 出力形式
 市場規模（金額）＋ 算出式 ＋ 出典一覧</pre>
     <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  
+    <div class="tip"><span class="tipl">精度UP</span><div><b>範囲を明示</b>（鹿児島市／県／全国）。BtoBかBtoCか、<b>想定する単価帯</b>も書くと、推計の前提がぶれません。</div></div>
   </article>
 
   <!-- 6 売上予測 -->
@@ -491,6 +488,8 @@
 計算式の内訳表 ＋ 年間売上（強気／堅め）＋ 1日あたり換算 ＋ 出典</pre>
     <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
     <div class="note">講座の実演例：天文館「ラーメン店」→ Gemini版 約2,831万円／ChatGPT版 約1,695万円。数字の大小より「1日あたり何杯になるか」で現実性を確かめます。</div>
+  
+    <div class="tip"><span class="tipl">精度UP</span><div><b>席数・営業日数・想定客単価・1日の想定客数</b>など分かる数字を渡すほど現実的に。「強気」と「堅め」の両方を頼むと、幅で判断できます。</div></div>
   </article>
 
   <!-- 7 出店場所 -->
@@ -519,6 +518,8 @@
 ■ 出力形式
 候補地3つを比較する表（商圏人口／競合数／強み・弱み／出典）＋ おすすめ1位とその理由</pre>
     <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  
+    <div class="tip"><span class="tipl">精度UP</span><div><b>外せない条件（家賃の上限・駅近/駐車場・ターゲットの居住地）</b>を書く。気になる候補エリアがあれば挙げると、比較が具体的になります。</div></div>
   </article>
 
   <!-- 8 STP -->
@@ -547,6 +548,8 @@
 ■ 出力形式
 3案の比較 ＋ 推薦案 ＋ その軸での私のキャッチ一言</pre>
     <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  
+    <div class="tip"><span class="tipl">精度UP</span><div><b>自分の強み・こだわり</b>を具体的に。「価格では戦わない」など<b>外したい方向</b>も伝えると、競合のいない空白地帯が見つかります。</div></div>
   </article>
 
   <!-- ===== STRATEGY ===== -->
@@ -582,6 +585,8 @@
 ■ 出力形式
 3パターンの比較表 ＋ 最優先ターゲットの結論</pre>
     <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  
+    <div class="tip"><span class="tipl">精度UP</span><div><b>商品・価格帯・提供価値</b>を具体的に。「ぜひ来てほしい人」と「無理に狙わない人」を添えると、ターゲット候補が鋭くなります。</div></div>
   </article>
 
   <!-- 10 ペルソナ -->
@@ -609,6 +614,8 @@
 ■ 出力形式
 プロフィール文（200〜400字）＋ 箇条書きの詳細 ＋ 刺さる一言</pre>
     <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  
+    <div class="tip"><span class="tipl">精度UP</span><div>ターゲットの説明を<b>年代・地域・暮らし向き</b>まで具体的に。実在のお客様像があれば、その特徴を渡すとリアルなペルソナになります。</div></div>
   </article>
 
   <!-- 11 ベネフィット翻訳 -->
@@ -635,6 +642,8 @@
 ■ 出力形式
 「強み → ベネフィット → 価値を高める一工夫」の3列の表</pre>
     <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  
+    <div class="tip"><span class="tipl">精度UP</span><div>強みは<b>事実で具体的に</b>（例「国産小麦100%」「元〇〇で15年」）。<b>お客様の悩み</b>も添えると、刺さる言葉に翻訳されます。</div></div>
   </article>
 
   <!-- 12 強み/ベネフィット/SP/USP -->
@@ -660,6 +669,8 @@
 ■ 出力形式
 4段階の流れ図（強み→ベネフィット→SP→USP）＋ USPの絞り込み案2つ</pre>
     <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  
+    <div class="tip"><span class="tipl">精度UP</span><div><b>競合がやっていないこと</b>を具体的に書く。曖昧だと平凡なUSPになります。<b>実績や数字</b>があれば必ず入れましょう。</div></div>
   </article>
 
   <!-- 13 タグライン -->
@@ -691,6 +702,8 @@
 ■ 出力形式
 タグライン5案（＋推薦）／キャッチコピー10案</pre>
     <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  
+    <div class="tip"><span class="tipl">精度UP</span><div><b>USP・ターゲット・店の雰囲気（高級／親しみ など）</b>を渡す。使いたい言葉やNGワードがあれば指定すると、精度が上がります。</div></div>
   </article>
 
   <!-- 14 商品3分類 -->
@@ -717,6 +730,8 @@
 ■ 出力形式
 3分類の表（商品案／価格イメージ／ねらい）＋ 育てる導線の説明</pre>
     <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  
+    <div class="tip"><span class="tipl">精度UP</span><div><b>主力商品・価格帯・原価感</b>を渡す。「客単価をいくら上げたいか」を書くと、まとめ買い・ギフトの設計が具体的になります。</div></div>
   </article>
 
   <!-- 15 ブランディング -->
@@ -745,6 +760,8 @@
 ■ 出力形式
 ブランド骨格シート（軸／言語表現／視覚表現／一貫性の注意）</pre>
     <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  
+    <div class="tip"><span class="tipl">精度UP</span><div><b>理念・始めた理由・大切にしたい価値観</b>を書く。参考にしたいお店や世界観があれば挙げると、ブランドの方向性が定まります。</div></div>
   </article>
 
   <!-- 16 商品ストーリー -->
@@ -773,6 +790,8 @@
 ■ 出力形式
 3案（ストーリー本文／掛け合わせる体験／狙う感情消費）</pre>
     <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  
+    <div class="tip"><span class="tipl">精度UP</span><div><b>商品の背景（産地・製法・人の物語・歴史）</b>を具体的に。実話の素材を渡すほど、共感されるストーリーになります。</div></div>
   </article>
 
   <!-- 17 値決め -->
@@ -801,6 +820,8 @@
 ■ 出力形式
 相場の調査結果（出典つき）＋ 松竹梅の価格表 ＋ 各価格の根拠</pre>
     <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  
+    <div class="tip"><span class="tipl">精度UP</span><div><b>原価・提供価値・競合価格（分かる範囲）</b>を渡す。<b>狙う客層の予算感</b>も添えると、松竹梅が現実的な価格になります。</div></div>
   </article>
 
   <!-- Magic phrases -->
@@ -823,6 +844,11 @@
 </footer>
 
 </div><!-- /#app -->
+
+<!-- 目次ボタン（右上・固定） -->
+<button id="menuBtn" class="menufab" aria-expanded="false" aria-controls="menu" aria-label="目次を開く">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>目次
+</button>
 
 <!-- Menu overlay -->
 <div id="menu" class="menu" hidden>
@@ -900,10 +926,6 @@
     const href = a.getAttribute('href');
     closeMenu();
     jumpTo(href);
-  }));
-  document.querySelectorAll('nav.jump a[href^="#"]').forEach(a=>a.addEventListener('click', e=>{
-    e.preventDefault();
-    jumpTo(a.getAttribute('href'));
   }));
 
   // ----- 上に戻る -----
