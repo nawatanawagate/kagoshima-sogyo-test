@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-xn2FB9G3V2+BCk/F7+99+3U2/qUu8/7l/dFDwcyFAVI='; script-src 'sha256-zWqL1zu5qf1FMmKwVUWoEDN2fYqQMvgiMwP4CoOfAGo='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-/nFfo7Mhg+39OBAmtgIjbLjOjCJQo37h2CS0b+xjvQs='; script-src 'sha256-OVhDdL3OLSjEZ36W7SLV/SBR7qQOfj3CIF03BnWHzR8='; img-src data:; base-uri 'none'; form-action 'none'">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%23C2410C'/%3E%3Ctext%20x='16'%20y='22'%20font-size='16'%20text-anchor='middle'%20fill='white'%20font-family='serif'%3EAI%3C/text%3E%3C/svg%3E">
 <title>AI活用プロンプト集｜鹿児島市 創業スキル養成講座 第2回</title>
 <style>
@@ -114,23 +114,24 @@
   .menubtn:hover{background:#000}
   .menubtn svg{width:16px;height:16px}
 
-  /* ===== Menu overlay ===== */
+  /* ===== Menu（サイドドロワー） ===== */
   .menu{position:fixed;inset:0;z-index:60;background:rgba(28,24,18,.5);
-    opacity:0;transition:opacity .26s ease;display:flex;justify-content:center;
-    align-items:flex-start;padding:14px;overflow-y:auto}
+    opacity:0;transition:opacity .26s ease}
   .menu.open{opacity:1}
   .menu-panel{
-    background:var(--card);width:100%;max-width:440px;border-radius:18px;
-    box-shadow:0 24px 60px rgba(28,24,18,.35);overflow:hidden;
-    transform:translateY(-12px) scale(.98);transition:transform .26s ease;
-    margin:max(8px,env(safe-area-inset-top)) 0 24px;
+    position:absolute;top:0;left:0;bottom:0;
+    width:min(86vw,360px);background:var(--card);
+    box-shadow:0 0 60px rgba(28,24,18,.45);
+    border-radius:0 20px 20px 0;
+    display:flex;flex-direction:column;
+    transform:translateX(-102%);transition:transform .3s cubic-bezier(.33,1,.68,1);
   }
-  .menu.open .menu-panel{transform:translateY(0) scale(1)}
+  .menu.open .menu-panel{transform:translateX(0)}
   .menu-head{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:16px 18px;border-bottom:1px solid var(--line);
-    font-family:var(--serif);font-size:17px;font-weight:700;
-    position:sticky;top:0;background:var(--card);
+    flex:none;display:flex;align-items:center;justify-content:space-between;
+    padding:max(18px,env(safe-area-inset-top)) 18px 16px;
+    border-bottom:1px solid var(--line);
+    font-family:var(--serif);font-size:18px;font-weight:700;background:var(--card);
   }
   .menu-close{
     width:34px;height:34px;border:1px solid var(--line);background:#fff;border-radius:10px;
@@ -138,7 +139,7 @@
   }
   .menu-close:hover{background:var(--paper);border-color:var(--ink)}
   .menu-close svg{width:18px;height:18px}
-  .menu-body{padding:10px 12px 16px}
+  .menu-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:10px 12px 24px}
   .menu-group{
     font-size:12px;font-weight:700;letter-spacing:.08em;color:#fff;
     padding:5px 11px;border-radius:7px;display:inline-block;margin:14px 6px 8px;
@@ -845,7 +846,7 @@
   function closeMenu(){
     menu.classList.remove('open');
     menuBtn.setAttribute('aria-expanded','false');
-    menuTimer = setTimeout(()=>{ menu.hidden = true; }, 280);
+    menuTimer = setTimeout(()=>{ menu.hidden = true; }, 320);
   }
   menuBtn.addEventListener('click', openMenu);
   menuClose.addEventListener('click', closeMenu);
