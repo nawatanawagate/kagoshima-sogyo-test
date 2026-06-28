@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-xn2FB9G3V2+BCk/F7+99+3U2/qUu8/7l/dFDwcyFAVI='; script-src 'sha256-zWqL1zu5qf1FMmKwVUWoEDN2fYqQMvgiMwP4CoOfAGo='; img-src data:; base-uri 'none'; form-action 'none'">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%23C2410C'/%3E%3Ctext%20x='16'%20y='22'%20font-size='16'%20text-anchor='middle'%20fill='white'%20font-family='serif'%3EAI%3C/text%3E%3C/svg%3E">
+<title>AI活用プロンプト集｜鹿児島市 創業スキル養成講座 第2回</title>
+<style>
+  :root{
+    --sans:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Noto Sans JP",Meiryo,sans-serif;
+    --serif:"Hiragino Mincho ProN","Hiragino Mincho Pro","Yu Mincho",YuMincho,"Noto Serif JP",serif;
+    --paper:#FBF7F1;
+    --paper2:#F3EADE;
+    --ink:#211C17;
+    --muted:#6E6358;
+    --line:#E4D9C9;
+    --card:#FFFFFF;
+    --ember:#C2410C;      /* 桜島 */
+    --ember-soft:#FBE7DC;
+    --bay:#0F5257;        /* 錦江湾 */
+    --bay-soft:#DCEBEA;
+    --gold:#B45309;
+    --shadow:0 1px 2px rgba(33,28,23,.04),0 8px 24px rgba(33,28,23,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:var(--sans);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    letter-spacing:.01em;
+    overflow:hidden;
+  }
+  /* ページ自身を独立スクロール領域にする（iframe埋め込みでもページ内ジャンプを確実に動かす） */
+  #app{
+    height:100vh;height:100dvh;overflow-y:auto;-webkit-overflow-scrolling:touch;
+    scroll-behavior:smooth;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+
+  /* ===== Header ===== */
+  header{
+    background:
+      radial-gradient(120% 90% at 85% -10%, rgba(194,65,12,.18), transparent 60%),
+      radial-gradient(110% 90% at 5% 0%, rgba(15,82,87,.16), transparent 55%),
+      #1C1812;
+    color:#FBF7F1;
+    padding:54px 0 46px;
+    position:relative;
+    overflow:hidden;
+  }
+  header::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(251,247,241,.35),transparent);
+  }
+  .eyebrow{
+    font-size:13px;letter-spacing:.18em;color:#E8B89E;font-weight:700;
+    display:flex;align-items:center;gap:10px;margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--ember);display:inline-block}
+  header h1{
+    font-family:var(--serif);font-weight:800;
+    font-size:clamp(28px,7vw,42px);line-height:1.3;letter-spacing:.01em;
+  }
+  header h1 .accent{color:#F2A57C}
+  header .sub{margin-top:18px;font-size:15px;color:#D8CDBE;max-width:54ch}
+  header .meta{margin-top:24px;font-size:12.5px;color:#A89A88;letter-spacing:.04em}
+
+  /* ===== How-to ===== */
+  .howto{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    box-shadow:var(--shadow);padding:26px 24px;margin:-30px 0 38px;position:relative;z-index:2;
+  }
+  .howto h2{
+    font-family:var(--serif);font-size:18px;font-weight:700;
+    display:flex;align-items:center;gap:10px;margin-bottom:16px;
+  }
+  .howto h2 .dot{width:9px;height:9px;border-radius:50%;background:var(--ember)}
+  .howto ol{list-style:none;counter-reset:h;display:grid;gap:14px}
+  .howto li{counter-increment:h;display:flex;gap:14px;font-size:14.5px}
+  .howto li::before{
+    content:counter(h);flex:none;width:26px;height:26px;border-radius:50%;
+    background:var(--ember-soft);color:var(--ember);font-weight:700;font-size:13px;
+    display:grid;place-items:center;margin-top:3px;
+  }
+  .howto b{color:var(--ink)}
+  .howto .warn b{color:var(--ember)}
+  .howto .em{color:var(--ember);font-weight:700}
+
+  /* ===== Section nav ===== */
+  nav.jump{
+    position:sticky;top:0;z-index:20;background:rgba(251,247,241,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+    display:flex;gap:8px;padding:11px 20px;justify-content:center;flex-wrap:wrap;
+  }
+  nav.jump a{
+    text-decoration:none;font-size:13px;font-weight:700;color:var(--muted);
+    padding:7px 15px;border-radius:999px;border:1px solid var(--line);background:#fff;
+    transition:.2s;
+  }
+  nav.jump a:hover{color:var(--ink);border-color:var(--ink)}
+  nav.jump a.t-bay:hover{color:var(--bay);border-color:var(--bay)}
+  nav.jump a.t-em:hover{color:var(--ember);border-color:var(--ember)}
+  .menubtn{
+    display:inline-flex;align-items:center;gap:7px;cursor:pointer;
+    font-family:inherit;font-size:13px;font-weight:700;color:#fff;background:var(--ink);
+    border:1px solid var(--ink);padding:7px 15px 7px 13px;border-radius:999px;transition:.2s;
+  }
+  .menubtn:hover{background:#000}
+  .menubtn svg{width:16px;height:16px}
+
+  /* ===== Menu overlay ===== */
+  .menu{position:fixed;inset:0;z-index:60;background:rgba(28,24,18,.5);
+    opacity:0;transition:opacity .26s ease;display:flex;justify-content:center;
+    align-items:flex-start;padding:14px;overflow-y:auto}
+  .menu.open{opacity:1}
+  .menu-panel{
+    background:var(--card);width:100%;max-width:440px;border-radius:18px;
+    box-shadow:0 24px 60px rgba(28,24,18,.35);overflow:hidden;
+    transform:translateY(-12px) scale(.98);transition:transform .26s ease;
+    margin:max(8px,env(safe-area-inset-top)) 0 24px;
+  }
+  .menu.open .menu-panel{transform:translateY(0) scale(1)}
+  .menu-head{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 18px;border-bottom:1px solid var(--line);
+    font-family:var(--serif);font-size:17px;font-weight:700;
+    position:sticky;top:0;background:var(--card);
+  }
+  .menu-close{
+    width:34px;height:34px;border:1px solid var(--line);background:#fff;border-radius:10px;
+    cursor:pointer;color:var(--ink);display:grid;place-items:center;transition:.18s;
+  }
+  .menu-close:hover{background:var(--paper);border-color:var(--ink)}
+  .menu-close svg{width:18px;height:18px}
+  .menu-body{padding:10px 12px 16px}
+  .menu-group{
+    font-size:12px;font-weight:700;letter-spacing:.08em;color:#fff;
+    padding:5px 11px;border-radius:7px;display:inline-block;margin:14px 6px 8px;
+  }
+  .menu-group:first-child{margin-top:6px}
+  .menu-group.bay{background:var(--bay)}
+  .menu-group.em{background:var(--ember)}
+  .menu-body a{
+    display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);
+    font-size:15px;font-weight:500;padding:11px 12px;border-radius:11px;transition:.15s;
+  }
+  .menu-body a:hover,.menu-body a:focus-visible{background:var(--paper)}
+  .menu-body a .mn{
+    flex:none;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;
+    font-family:var(--serif);font-weight:800;font-size:14px;color:#fff;
+  }
+  .menu-body a .mn.bay{background:var(--bay)}
+  .menu-body a .mn.em{background:var(--ember)}
+  .menu-magic{
+    margin-top:12px;border-top:1px dashed var(--line);padding-top:16px !important;
+    font-weight:700 !important;color:var(--gold) !important;
+  }
+  a:focus-visible,button:focus-visible{outline:2px solid var(--bay);outline-offset:2px}
+
+  /* ===== 上に戻るボタン ===== */
+  .totop{
+    position:fixed;right:16px;bottom:18px;z-index:50;
+    width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;
+    background:var(--ink);color:#fff;display:grid;place-items:center;
+    box-shadow:0 6px 20px rgba(28,24,18,.32);
+    opacity:0;pointer-events:none;transform:translateY(10px);
+    transition:opacity .25s ease,transform .25s ease,background .2s;
+  }
+  .totop.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+  .totop:hover{background:#000}
+  .totop svg{width:22px;height:22px}
+
+  @media (prefers-reduced-motion:reduce){
+    .menu,.menu-panel,.totop{transition:none}
+    #app{scroll-behavior:auto}
+  }
+
+  /* ===== Section heading ===== */
+  .sec{margin:46px 0 8px;display:flex;align-items:baseline;gap:14px;scroll-margin-top:64px}
+  .sec .badge{
+    font-family:var(--serif);font-size:13px;font-weight:700;color:#fff;
+    padding:5px 13px;border-radius:8px;letter-spacing:.05em;white-space:nowrap;
+  }
+  .sec h2{font-family:var(--serif);font-size:22px;font-weight:800}
+  .sec.research .badge{background:var(--bay)}
+  .sec.strategy .badge{background:var(--ember)}
+  .sec .lead{font-size:14px;color:var(--muted);margin:4px 0 24px;padding-left:2px}
+
+  /* ===== Prompt card ===== */
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    box-shadow:var(--shadow);padding:22px 22px 24px;margin-bottom:20px;scroll-margin-top:64px;
+  }
+  .card .head{display:flex;align-items:flex-start;gap:13px;margin-bottom:6px}
+  .card .num{
+    flex:none;font-family:var(--serif);font-weight:800;font-size:16px;
+    width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#fff;
+  }
+  .research .num{background:var(--bay)}
+  .strategy .num{background:var(--ember)}
+  .card h3{font-size:17.5px;font-weight:700;line-height:1.45}
+  .card .ref{font-size:12px;color:var(--muted);margin-top:2px;font-weight:500}
+  .card .note{font-size:13.5px;color:var(--muted);margin:10px 0 4px;padding:10px 13px;
+    background:var(--paper);border-radius:10px;border:1px dashed var(--line)}
+
+  .ptitle{
+    display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;
+    letter-spacing:.04em;margin:18px 0 8px;color:var(--muted);
+  }
+  .ptitle .tag{padding:3px 10px;border-radius:6px;font-size:11.5px;color:#fff}
+  .ptitle.simple .tag{background:#7A8B5A}
+  .ptitle.struct .tag{background:var(--gold)}
+
+  .promptbox{position:relative}
+  pre.prompt{
+    font-family:var(--sans);font-size:13.5px;line-height:1.78;
+    background:#FCFAF6;border:1px solid var(--line);border-radius:12px;
+    padding:16px 16px 16px;white-space:pre-wrap;word-break:break-word;color:#2B251E;
+  }
+  pre.prompt .fill{color:var(--ember);font-weight:700;background:var(--ember-soft);
+    padding:0 3px;border-radius:4px}
+  .copybtn{
+    margin-top:10px;width:100%;border:none;cursor:pointer;
+    background:var(--ink);color:#fff;font-family:inherit;font-weight:700;font-size:14px;
+    padding:13px;border-radius:11px;display:flex;align-items:center;justify-content:center;gap:9px;
+    transition:.18s;letter-spacing:.03em;
+  }
+  .copybtn:hover{transform:translateY(-1px);background:#000}
+  .copybtn:active{transform:translateY(0)}
+  .copybtn.done{background:var(--bay)}
+  .copybtn svg{width:16px;height:16px}
+
+  /* ===== Magic phrases ===== */
+  .magic{background:#1C1812;color:#F5EFE6;border-radius:18px;padding:28px 24px;margin:44px 0 0;scroll-margin-top:64px}
+  .magic h2{font-family:var(--serif);font-size:19px;margin-bottom:6px}
+  .magic p.lead{font-size:13.5px;color:#C9BCab;margin-bottom:18px}
+  .magic .m{display:flex;gap:12px;padding:12px 0;border-top:1px solid rgba(255,255,255,.1);align-items:flex-start}
+  .magic .m:first-of-type{border-top:none}
+  .magic .m .k{flex:none;font-size:12.5px;font-weight:700;color:#F2A57C;width:84px}
+  .magic .m .v{font-size:13.5px;color:#E6DCce}
+
+  footer{padding:40px 20px 56px;text-align:center}
+  footer .disc{font-size:12px;color:var(--muted);max-width:60ch;margin:0 auto 16px;line-height:1.7}
+  footer .sig{font-family:var(--serif);font-size:13px;color:var(--ink);font-weight:700}
+  footer .org{font-size:11.5px;color:var(--muted);margin-top:4px;letter-spacing:.06em}
+
+  /* toast */
+  #toast{
+    position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);
+    background:var(--bay);color:#fff;font-size:14px;font-weight:700;padding:12px 22px;
+    border-radius:999px;box-shadow:0 8px 28px rgba(0,0,0,.22);opacity:0;pointer-events:none;
+    transition:.28s;z-index:50;
+  }
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div id="app">
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">鹿児島市 創業スキル養成講座 第2回</div>
+    <h1>マーケティング<br><span class="accent">AI活用</span>プロンプト集</h1>
+    <p class="sub">スライドのページ順に、そのまま使えるプロンプトを並べました。お使いのAI（Gemini／ChatGPT／Claude）に貼り付けてお使いください。</p>
+    <div class="meta">簡易プロンプト ＋ 構造化指示プロンプト ／ 全17テーマ</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- How to -->
+  <div class="howto">
+    <h2><span class="dot"></span>AIを使う3つのコツ</h2>
+    <ol>
+      <li><span><b>【　】の中を自分の事業に書き換える。</b>　オレンジ色の<span class="em">【業種】【地域】【特徴】</span>を、打つ前に必ず自分の言葉に置き換えます。</span></li>
+      <li><span><b>会話は「続けて」つなげる。</b>　3C → SWOT → クロスSWOT のように、同じ会話の中で続けて質問すると、AIが文脈を引き継ぎます。</span></li>
+      <li class="warn"><span><b>数字は鵜呑みにしない（最重要）。</b>　AIはそれっぽい数字を作ることがあります。「その数字、1日あたり何件？」「出典は？」と必ず確認を。</span></li>
+    </ol>
+  </div>
+</div>
+
+<!-- Jump nav -->
+<nav class="jump">
+  <button id="menuBtn" class="menubtn" aria-expanded="false" aria-controls="menu" aria-label="目次を開く">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>目次
+  </button>
+  <a href="#research" class="t-bay">② リサーチ</a>
+  <a href="#strategy" class="t-em">③ 戦略</a>
+</nav>
+
+<div class="wrap">
+
+  <!-- ===== RESEARCH ===== -->
+  <div class="sec research" id="research">
+    <span class="badge">② リサーチ</span>
+    <h2>事業環境を調べる</h2>
+  </div>
+  <p class="lead">市場・競合・自社を客観的に知り、「勝てる立ち位置」を見つけます。</p>
+
+  <!-- 1 PEST -->
+  <article class="card research" id="t1">
+    <div class="head"><div class="num">1</div><div><h3>PEST分析</h3><div class="ref">スライド：追い風・向かい風を知る</div></div></div>
+    <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
+    <div class="promptbox"><pre class="prompt">鹿児島市で「<span class="fill">【業種】</span>」で創業予定です。PEST分析を行ってください。</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="ptitle struct"><span class="tag">構造化</span>精度を上げたいとき</div>
+    <div class="promptbox"><pre class="prompt">あなたは地域ビジネスに詳しいマーケティングコンサルタントです。
+私は鹿児島市で「<span class="fill">【業種】</span>」の創業を予定しています。
+この事業を取り巻く外部環境を、PEST分析の枠組みで整理してください。
+
+■ 出してほしい項目
+- Political（政治・規制・法改正・税制）
+- Economic（景気・物価・為替・地域経済）
+- Social（人口動態・流行・価値観・世帯構成）
+- Technological（IT・新技術・業務効率化の流れ）
+
+■ ルール
+- 各項目3〜5個、鹿児島市・鹿児島県の実情に寄せて具体的に書く
+- それぞれ「追い風」か「向かい風」かを明記する
+- 最後に「この事業にとって特に重要な追い風トップ3」をまとめる
+
+■ 出力形式
+4項目それぞれを見出しにした箇条書き＋最後にまとめ表</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  </article>
+
+  <!-- 2 3C -->
+  <article class="card research" id="t2">
+    <div class="head"><div class="num">2</div><div><h3>3C分析</h3><div class="ref">スライド：市場・顧客／競合／自社で立ち位置を知る</div></div></div>
+    <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
+    <div class="promptbox"><pre class="prompt">鹿児島市<span class="fill">【○○町】</span>で「<span class="fill">【業種】</span>」を創業予定です。
+3C分析を行い、私がとるべき立ち位置を分析してください。</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="ptitle struct"><span class="tag">構造化</span>精度を上げたいとき</div>
+    <div class="promptbox"><pre class="prompt">あなたは創業支援の専門家です。
+私は鹿児島市<span class="fill">【○○町】</span>で「<span class="fill">【業種】</span>」を創業予定です。<span class="fill">【特徴・強みがあれば記入】</span>
+3C分析で、私が狙うべき立ち位置を導いてください。
+
+■ 3つの観点
+- Customer（市場・顧客）：このエリアの客層、ニーズ、市場の伸び
+- Competitor（競合）：近隣の競合店の特徴・強み・弱み
+- Company（自社）：私の強み・弱み（上記の特徴をふまえて）
+
+■ ルール
+- 鹿児島市・該当エリアの実情に寄せる
+- 推測した部分は「(推定)」と明記する
+- 最後に「競合がやっていない、私が勝てる立ち位置」を一文で提案する
+
+■ 出力形式
+3観点の表 ＋ 最後に「とるべき立ち位置」の結論</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  </article>
+
+  <!-- 3 SWOT -->
+  <article class="card research" id="t3">
+    <div class="head"><div class="num">3</div><div><h3>SWOT分析</h3><div class="ref">スライド：強み・弱み・機会・脅威に整理</div></div></div>
+    <div class="note">前の「3C分析」の回答に続けて、同じ会話の中で打ってください。</div>
+    <div class="ptitle simple"><span class="tag">簡易</span>3C分析の続きで打つ</div>
+    <div class="promptbox"><pre class="prompt">前回の3C分析の結果をもとに、続けてSWOT分析を行ってください。</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="ptitle struct"><span class="tag">構造化</span>精度を上げたいとき</div>
+    <div class="promptbox"><pre class="prompt">先ほどの3C分析の結果をもとに、SWOT分析に整理してください。
+
+■ 4象限
+- Strengths（強み・内部）
+- Weaknesses（弱み・内部）
+- Opportunities（機会・外部）
+- Threats（脅威・外部）
+
+■ ルール
+- 各象限3〜5個、短い言葉（一行）で簡潔に書く
+- 創業初期の私が現実に手を打てる粒度にする
+
+■ 出力形式
+2×2のSWOTマトリクス（表）</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  </article>
+
+  <!-- 4 クロスSWOT -->
+  <article class="card research" id="t4">
+    <div class="head"><div class="num">4</div><div><h3>クロスSWOT分析</h3><div class="ref">スライド：4つの戦略を導く</div></div></div>
+    <div class="note">前の「SWOT分析」の回答に続けて、同じ会話の中で打ってください。</div>
+    <div class="ptitle simple"><span class="tag">簡易</span>SWOTの続きで打つ</div>
+    <div class="promptbox"><pre class="prompt">前回のSWOT分析の結果をもとに、続けてクロスSWOT分析を行ってください。</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="ptitle struct"><span class="tag">構造化</span>精度を上げたいとき</div>
+    <div class="promptbox"><pre class="prompt">先ほどのSWOT分析をもとに、クロスSWOT分析で具体的な戦略を導いてください。
+
+■ 4つの掛け合わせ
+- 機会×強み（積極化戦略）：最強コンボでチャンスを掴む
+- 機会×弱み（段階的施策）：弱みを克服してチャンスをモノにする
+- 脅威×強み（差別化戦略）：強みでピンチをチャンスに変える
+- 脅威×弱み（専守防衛・撤退）：最大のピンチを乗り越える打開策
+
+■ ルール
+- 各マスに、明日から動ける具体的な打ち手を2〜3個
+- 最後に「最優先で取り組むべき戦略1つ」を理由つきで提案
+
+■ 出力形式
+4象限の表 ＋ 最優先戦略の結論</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  </article>
+
+  <!-- 5 市場規模 -->
+  <article class="card research" id="t5">
+    <div class="head"><div class="num">5</div><div><h3>市場規模の把握</h3><div class="ref">スライド：市場把握の重要性／統計情報サイト</div></div></div>
+    <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
+    <div class="promptbox"><pre class="prompt">鹿児島市で「<span class="fill">【業種】</span>」の市場規模は、年間どのくらいですか？
+公的な統計をもとに、根拠と一緒に教えてください。</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="ptitle struct"><span class="tag">構造化</span>精度を上げたいとき</div>
+    <div class="promptbox"><pre class="prompt">あなたは地域経済のリサーチャーです。
+鹿児島市における「<span class="fill">【業種】</span>」の年間市場規模を概算してください。
+
+■ 厳守ルール
+1. 数値は想像で作らず、実在する公的統計・公開データをもとにする
+2. すべての数値に【出典：統計名・調査年】を併記する
+3. 確認できない数値は「不明」と書き、推定で補った部分は「(推定)」＋計算式を示す
+
+■ 使ってほしいデータ源（例）
+- 人口・世帯 → 国勢調査／住民基本台帳人口（総務省 e-Stat）
+- 消費支出 → 家計調査（総務省）
+- 事業所数 → 経済センサス（e-Stat）
+
+■ 出力形式
+市場規模（金額）＋ 算出式 ＋ 出典一覧</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  </article>
+
+  <!-- 6 売上予測 -->
+  <article class="card research" id="t6">
+    <div class="head"><div class="num">6</div><div><h3>売上予測</h3><div class="ref">スライド：統計情報を用いた売上予測</div></div></div>
+    <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
+    <div class="promptbox"><pre class="prompt">鹿児島市・天文館で「<span class="fill">【業種】</span>」を開く場合の、現実的な年間売上予測を、
+①お客様の数 × ②シェア × ③客単価 × ④来店頻度 で計算してください。</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="ptitle struct"><span class="tag">構造化</span>精度を上げたいとき</div>
+    <div class="promptbox"><pre class="prompt">鹿児島市<span class="fill">【○○・エリア名】</span>で「<span class="fill">【業種】</span>」を開く場合の、現実的な年間売上予測を、
+次の式で計算してください。
+売上予測 ＝ ①お客様の数 × ②自店のシェア × ③客単価 × ④来店頻度
+
+■ ルール
+- 各数字は公的統計（e-Stat・家計調査等）を調べ、根拠・出典を必ず明記する
+- 無い数字はフェルミ推定で補い、「(推定)」と明記する
+- 「多め（強気）」「少なめ（堅め）」の幅も出す
+- 最後に「これは1日あたり何件・何人に相当するか」を必ず示す（現実性チェック）
+
+■ 出力形式
+計算式の内訳表 ＋ 年間売上（強気／堅め）＋ 1日あたり換算 ＋ 出典</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="note">講座の実演例：天文館「ラーメン店」→ Gemini版 約2,831万円／ChatGPT版 約1,695万円。数字の大小より「1日あたり何杯になるか」で現実性を確かめます。</div>
+  </article>
+
+  <!-- 7 出店場所 -->
+  <article class="card research" id="t7">
+    <div class="head"><div class="num">7</div><div><h3>出店場所の候補探し</h3><div class="ref">スライド：最適な出店場所候補探し</div></div></div>
+    <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
+    <div class="promptbox"><pre class="prompt">鹿児島市内で「<span class="fill">【業種】</span>」の出店候補地を、公的データをもとに3つ提案してください。
+それぞれの根拠（人口・競合の少なさなど）も教えてください。</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="ptitle struct"><span class="tag">構造化</span>精度を上げたいとき</div>
+    <div class="promptbox"><pre class="prompt">あなたは地域ビジネスのリサーチャーです。
+鹿児島市内で「<span class="fill">【業種】</span>」の出店候補地を探しています。
+
+■ 厳守ルール（最重要）
+1. 数値は想像で作らず、実在する公的統計・公開データをウェブ検索して取得する
+2. すべての数値に【出典：統計名・調査年・URL】を併記する
+3. 確認できない数値は「不明」と書く。推定で補った部分は「(推定)」＋計算式を示す
+4. 古いデータしかない場合は調査年を明記する
+
+■ 使ってほしいデータ源（例）
+- 商圏人口・年齢構成・世帯 → 国勢調査／住民基本台帳人口（総務省 e-Stat）
+- 地域経済・産業 → RESAS（地域経済分析システム）
+- 事業所数（競合数） → 経済センサス（e-Stat）
+- 該当業種への支出 → 家計調査（総務省）
+
+■ 出力形式
+候補地3つを比較する表（商圏人口／競合数／強み・弱み／出典）＋ おすすめ1位とその理由</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  </article>
+
+  <!-- 8 STP -->
+  <article class="card research" id="t8">
+    <div class="head"><div class="num">8</div><div><h3>STP・ポジショニングマップ</h3><div class="ref">スライド：勝てる空白地帯を探す</div></div></div>
+    <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
+    <div class="promptbox"><pre class="prompt">鹿児島市で「<span class="fill">【業種】</span>」を創業します。
+競合と差がつくポジショニングマップの2軸を、3案提案してください。</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="ptitle struct"><span class="tag">構造化</span>精度を上げたいとき</div>
+    <div class="promptbox"><pre class="prompt">あなたはマーケティング戦略の専門家です。
+鹿児島市で「<span class="fill">【業種】</span>」を創業します。<span class="fill">【強み・特徴を記入】</span>
+競合がいない「空白地帯」を見つけるためのポジショニングマップを設計してください。
+
+■ 2軸を選ぶコツ（守ってほしい条件）
+1. お客様が選ぶときに重視する基準から選ぶ
+2. 2つは別々の基準にする（価格と品質のように連動する軸は避ける）
+3. 自社の強みが活きる軸を選ぶ
+4. 競合のいない空白地帯が見える軸を選ぶ
+
+■ やってほしいこと
+- 上記を満たす「縦軸×横軸」の組み合わせを3案提案
+- 各案について、私の事業がどこに置けるか、競合がどこに集まるかを説明
+- 最後に「最も勝てる1案」を理由つきで推薦
+
+■ 出力形式
+3案の比較 ＋ 推薦案 ＋ その軸での私のキャッチ一言</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  </article>
+
+  <!-- ===== STRATEGY ===== -->
+  <div class="sec strategy" id="strategy">
+    <span class="badge">③ 戦略</span>
+    <h2>「誰に × 何を」を決める</h2>
+  </div>
+  <p class="lead">調べた事実をもとに、ターゲット・価値・価格まで、商品の中身を固めます。</p>
+
+  <!-- 9 ターゲット -->
+  <article class="card strategy" id="t9">
+    <div class="head"><div class="num">9</div><div><h3>ターゲット設定</h3><div class="ref">スライド：見込み客を設定する／ターゲティングシート</div></div></div>
+    <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
+    <div class="promptbox"><pre class="prompt">鹿児島市で「<span class="fill">【業種】</span>」を始めます。
+理想のお客様（ターゲット）の候補を、3パターン提案してください。</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="ptitle struct"><span class="tag">構造化</span>精度を上げたいとき</div>
+    <div class="promptbox"><pre class="prompt">あなたは創業支援のマーケターです。
+鹿児島市で「<span class="fill">【業種】</span>」を始めます。<span class="fill">【商品・強みを記入】</span>
+狙うべきターゲット（顧客の集団）を設計してください。
+
+■ ターゲットを描く軸
+- デモグラフィック（年齢・性別・収入・職業・家族構成）
+- 地理的変数（居住エリア：鹿児島市内／県内／全国）
+- サイコグラフィック（価値観・ライフスタイル・関心ごと）
+- ニーズ・困りごと
+
+■ やってほしいこと
+- 上記をもとにターゲット候補を3パターン提案
+- 各パターンの市場の大きさ・狙いやすさを5段階で評価
+- 最後に「創業初期にまず狙うべき1パターン」を理由つきで推薦
+
+■ 出力形式
+3パターンの比較表 ＋ 最優先ターゲットの結論</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  </article>
+
+  <!-- 10 ペルソナ -->
+  <article class="card strategy" id="t10">
+    <div class="head"><div class="num">10</div><div><h3>ペルソナ作り</h3><div class="ref">スライド：ペルソナシート例</div></div></div>
+    <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
+    <div class="promptbox"><pre class="prompt">ターゲットが「<span class="fill">【ターゲットの説明】</span>」のとき、
+その代表となる一人のお客様（ペルソナ）を、名前つきで具体的に描いてください。</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="ptitle struct"><span class="tag">構造化</span>精度を上げたいとき</div>
+    <div class="promptbox"><pre class="prompt">先ほど決めたターゲットを代表する「一人のお客様（ペルソナ）」を、
+リアルな人物として具体的に描いてください。
+
+■ 入れてほしい項目
+- 基本：名前・年齢・性別・居住地（鹿児島市内）・家族構成・職業・年収
+- ライフスタイル：趣味、よく見るSNS、好きなお店、休日の過ごし方
+- 価値観：何を大切にし、何にお金を使い、何を避けるか
+- 困りごと：私の商品が解決できる悩み・欲求
+- 情報源：何を見て商品を知り、何を決め手に買うか
+
+■ ルール
+- 実在しそうなレベルまで具体的に。あいまいな表現は避ける
+- 最後に「このペルソナに刺さる一言（キャッチ）」を1つ添える
+
+■ 出力形式
+プロフィール文（200〜400字）＋ 箇条書きの詳細 ＋ 刺さる一言</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  </article>
+
+  <!-- 11 ベネフィット翻訳 -->
+  <article class="card strategy" id="t11">
+    <div class="head"><div class="num">11</div><div><h3>純顧客価値・ベネフィット翻訳</h3><div class="ref">スライド：強みではなく、ベネフィットを</div></div></div>
+    <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
+    <div class="promptbox"><pre class="prompt">私の事業の強みは「<span class="fill">【強み】</span>」です。
+これを、お客様目線の「ベネフィット（あなたは○○になれる）」に翻訳してください。</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="ptitle struct"><span class="tag">構造化</span>精度を上げたいとき</div>
+    <div class="promptbox"><pre class="prompt">あなたはコピーライティングに強いマーケターです。
+私の事業の強み（自分目線）は次のとおりです。
+- <span class="fill">【強み1】</span>
+- <span class="fill">【強み2】</span>
+- <span class="fill">【強み3】</span>
+
+これらを、お客様目線の「ベネフィット」に翻訳してください。
+
+■ ルール
+- 強み（うちは○○ができます）→ ベネフィット（あなたは○○になれます）の形にする
+- お客様が感じる「得」「変化」「うれしい未来」を具体的に描く
+- さらに、各ベネフィットについて「得られる価値 − 支払うコスト＝純顧客価値」を高める一工夫も添える
+
+■ 出力形式
+「強み → ベネフィット → 価値を高める一工夫」の3列の表</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  </article>
+
+  <!-- 12 強み/ベネフィット/SP/USP -->
+  <article class="card strategy" id="t12">
+    <div class="head"><div class="num">12</div><div><h3>強み／ベネフィット／SP／USP の整理</h3><div class="ref">スライド：4つの違い</div></div></div>
+    <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
+    <div class="promptbox"><pre class="prompt">私の事業（<span class="fill">【業種・特徴】</span>）について、
+強み → ベネフィット → セールスポイント → USP の順に整理してください。</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="ptitle struct"><span class="tag">構造化</span>精度を上げたいとき</div>
+    <div class="promptbox"><pre class="prompt">私の事業を、次の4段階で整理してください。
+強み（自分目線の事実）→ ベネフィット（お客様の得）→ セールスポイント（売り文句）→ USP（競合にない唯一）
+
+■ 私の事業
+- 業種：<span class="fill">【業種】</span>
+- 強み・こだわり：<span class="fill">【記入】</span>
+- 競合との違い：<span class="fill">【記入】</span>
+
+■ ルール
+- USPは「鹿児島市で唯一」「○○専門」のように、一点に絞り込む
+- 競合と同質化していないか自己チェックし、弱ければ絞り込み案を出す
+
+■ 出力形式
+4段階の流れ図（強み→ベネフィット→SP→USP）＋ USPの絞り込み案2つ</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  </article>
+
+  <!-- 13 タグライン -->
+  <article class="card strategy" id="t13">
+    <div class="head"><div class="num">13</div><div><h3>タグライン／キャッチコピー</h3><div class="ref">スライド：中身と言葉（USP→タグライン）</div></div></div>
+    <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
+    <div class="promptbox"><pre class="prompt">私のお店のUSPは「<span class="fill">【USP】</span>」です。
+長く使えるタグライン（ブランドの旗印）を5案つくってください。</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="ptitle struct"><span class="tag">構造化</span>精度を上げたいとき</div>
+    <div class="promptbox"><pre class="prompt">あなたはプロのコピーライターです。
+私の事業の言葉を2種類つくってください。
+
+■ 材料
+- USP：<span class="fill">【記入】</span>
+- ベネフィット：<span class="fill">【記入】</span>
+- ターゲット：<span class="fill">【記入】</span>
+
+■ つくってほしいもの
+1. タグライン（USPから）…長く使うブランドの旗印。1案に絞れるよう5案＋推薦1つ
+   例）無化調ラーメン店なら「からだに、やさしい一杯。」
+2. キャッチコピー（ベネフィット／セールスポイントから）…その都度使う振り向かせる言葉。10案
+   例）「化学調味料ゼロ、新メニュー登場！」
+
+■ ルール
+- 短く、覚えやすく、ターゲットの心に響く言葉にする
+- 誇大表現・No.1表記など、根拠のない断定は使わない
+
+■ 出力形式
+タグライン5案（＋推薦）／キャッチコピー10案</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  </article>
+
+  <!-- 14 商品3分類 -->
+  <article class="card strategy" id="t14">
+    <div class="head"><div class="num">14</div><div><h3>商品3分類（売れる品揃え）</h3><div class="ref">スライド：商品づくりの商品3分類</div></div></div>
+    <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
+    <div class="promptbox"><pre class="prompt">「<span class="fill">【業種】</span>」の品揃えを、お試し商品・定番商品・まとめ買い／ギフト商品の
+3分類で具体的に提案してください。</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="ptitle struct"><span class="tag">構造化</span>精度を上げたいとき</div>
+    <div class="promptbox"><pre class="prompt">あなたは商品設計の専門家です。
+「<span class="fill">【業種】</span>」の品揃えを、お客様の知識・体験レベルに合わせて設計してください。
+
+■ 3つの役割
+- お試し商品：初めての人が手に取りやすい入口商品
+- 定番商品：リピートの軸になる主力商品
+- まとめ買い／ギフト商品：客単価を上げる・贈答需要をつかむ商品
+
+■ やってほしいこと
+- 各分類に具体的な商品案を2〜3個（価格イメージつき）
+- 「お試し→定番→まとめ買い」へお客様を育てる導線も提案
+- 買い回り商品化のためのブランディング・商品ストーリーの一言も添える
+
+■ 出力形式
+3分類の表（商品案／価格イメージ／ねらい）＋ 育てる導線の説明</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  </article>
+
+  <!-- 15 ブランディング -->
+  <article class="card strategy" id="t15">
+    <div class="head"><div class="num">15</div><div><h3>ブランディング設計</h3><div class="ref">スライド：ブランディングの重要性</div></div></div>
+    <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
+    <div class="promptbox"><pre class="prompt">「<span class="fill">【業種・特徴】</span>」のお店のブランドコンセプトを考えてください。
+理念・USP・お客様への約束を、短い言葉でまとめてください。</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="ptitle struct"><span class="tag">構造化</span>精度を上げたいとき</div>
+    <div class="promptbox"><pre class="prompt">あなたはブランド設計の専門家です。
+私の事業のブランドの骨格をつくってください。
+
+■ 私の事業
+- 業種：<span class="fill">【業種】</span>／強み・USP：<span class="fill">【記入】</span>／ターゲット：<span class="fill">【記入】</span>
+
+■ 出してほしいもの
+1. ブランドの軸：理念・価値観／USP・差別化／お客様への価値の約束
+2. 言語的表現の案：ブランドネーム方向性・タグライン・トーン＆マナー
+3. 視覚的表現の方向性：ロゴの雰囲気・カラー・店舗デザインのイメージ
+4. ブランドを一貫させるための注意点
+
+■ ルール
+- ターゲットとUSPに一貫していること（ブレない軸）を最優先
+
+■ 出力形式
+ブランド骨格シート（軸／言語表現／視覚表現／一貫性の注意）</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  </article>
+
+  <!-- 16 商品ストーリー -->
+  <article class="card strategy" id="t16">
+    <div class="head"><div class="num">16</div><div><h3>商品ストーリー×体験</h3><div class="ref">スライド：イメージ価値を高める</div></div></div>
+    <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
+    <div class="promptbox"><pre class="prompt">「<span class="fill">【商品名・特徴】</span>」に、お客様の心に響く商品ストーリーをつけてください。
+歴史・こだわり・人のドラマなどの切り口で3案お願いします。</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="ptitle struct"><span class="tag">構造化</span>精度を上げたいとき</div>
+    <div class="promptbox"><pre class="prompt">あなたはストーリーテリングに強いマーケターです。
+私の商品「<span class="fill">【商品名・特徴】</span>」に、共感を生む物語（ストーリー）と顧客体験を設計してください。
+
+■ ストーリーの切り口（いずれか／組み合わせ）
+- 歴史・伝統ストーリー
+- 産地・特産品ストーリー
+- 作り手の想い・人のドラマ
+- こだわり・製法
+
+■ やってほしいこと
+- 上記をもとにストーリー案を3つ（各150〜250字）
+- 各ストーリーに掛け合わせる「顧客体験」のアイデアを添える
+  （例：見学・実演・限定の場・参加型イベント など）
+- どんな感情消費（トキ消費／イミ消費／エモ消費）を狙うかを明記
+
+■ 出力形式
+3案（ストーリー本文／掛け合わせる体験／狙う感情消費）</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  </article>
+
+  <!-- 17 値決め -->
+  <article class="card strategy" id="t17">
+    <div class="head"><div class="num">17</div><div><h3>値決め（5つの鉄則）</h3><div class="ref">スライド：商品の値決め 5つの鉄則</div></div></div>
+    <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
+    <div class="promptbox"><pre class="prompt">「<span class="fill">【商品名・特徴】</span>」の価格を決めたいです。
+全国の相場・競合価格を調べたうえで、松竹梅の3段階の価格案を提案してください。</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="ptitle struct"><span class="tag">構造化</span>精度を上げたいとき</div>
+    <div class="promptbox"><pre class="prompt">あなたは価格戦略の専門家です。
+私の商品「<span class="fill">【商品名・特徴】</span>」の値決めを、次の5つの鉄則にそって支援してください。
+
+■ 値決めの5鉄則
+1. お客様の予算から逆算する（原価からだけで決めない）
+2. 価格は相対的（松竹梅など比較対象を置く）
+3. 安さで勝負しない（安い＝不安と見られることもある）
+4. 価値≧価格なら高くても売れる（値下げより価値を上げる）
+5. 相場を知ってから決める（全国平均・競合の価格・品質・内容量を比較）
+
+■ やってほしいこと
+- 全国相場・競合価格を調べる（出典を明記。不明は「不明」と書く）
+- 松（高付加価値）・竹（主力）・梅（入口）の3段階の価格案を提案
+- それぞれ「なぜその価格か」「純顧客価値をどう高めるか」を説明
+
+■ 出力形式
+相場の調査結果（出典つき）＋ 松竹梅の価格表 ＋ 各価格の根拠</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+  </article>
+
+  <!-- Magic phrases -->
+  <div class="magic" id="magic">
+    <h2>困ったときの「魔法の一言」</h2>
+    <p class="lead">うまくいかないときは、AIの回答のあとに、この一言を続けてください。</p>
+    <div class="m"><div class="k">具体的に</div><div class="v">「鹿児島市の実情に合わせて、もっと具体的に書き直して」</div></div>
+    <div class="m"><div class="k">数字を疑う</div><div class="v">「その数字の出典は？　1日あたりに直すと何件になりますか？」</div></div>
+    <div class="m"><div class="k">わかりやすく</div><div class="v">「創業初心者にもわかる言葉で説明して」</div></div>
+    <div class="m"><div class="k">案を増やす</div><div class="v">「同じ条件で、別の切り口の案をあと3つ出して」</div></div>
+    <div class="m"><div class="k">短くする</div><div class="v">「いちばん大事な3点だけにしぼって」</div></div>
+  </div>
+
+</div>
+
+<footer>
+  <p class="disc">※ AIの回答（数値・事実・生成したコピー）は、必ずご自身で裏取りをしてからご活用ください。広告・宣伝に使う際は、景品表示法上、根拠のない「No.1」「日本一」などの最上級・断定表現は避けましょう。</p>
+  <div class="sig">鹿児島市 創業スキル養成講座 第2回「マーケティングの基礎知識」</div>
+  <div class="org">NAWAGATE株式会社</div>
+</footer>
+
+</div><!-- /#app -->
+
+<!-- Menu overlay -->
+<div id="menu" class="menu" hidden>
+  <div class="menu-panel" role="dialog" aria-modal="true" aria-label="目次">
+    <div class="menu-head">
+      <span>目次</span>
+      <button id="menuClose" class="menu-close" aria-label="目次を閉じる">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="menu-body">
+      <div class="menu-group bay">② リサーチ編</div>
+      <a href="#t1"><span class="mn bay">1</span>PEST分析</a>
+      <a href="#t2"><span class="mn bay">2</span>3C分析</a>
+      <a href="#t3"><span class="mn bay">3</span>SWOT分析</a>
+      <a href="#t4"><span class="mn bay">4</span>クロスSWOT分析</a>
+      <a href="#t5"><span class="mn bay">5</span>市場規模の把握</a>
+      <a href="#t6"><span class="mn bay">6</span>売上予測</a>
+      <a href="#t7"><span class="mn bay">7</span>出店場所の候補探し</a>
+      <a href="#t8"><span class="mn bay">8</span>STP・ポジショニングマップ</a>
+      <div class="menu-group em">③ 戦略編</div>
+      <a href="#t9"><span class="mn em">9</span>ターゲット設定</a>
+      <a href="#t10"><span class="mn em">10</span>ペルソナ作り</a>
+      <a href="#t11"><span class="mn em">11</span>純顧客価値・ベネフィット翻訳</a>
+      <a href="#t12"><span class="mn em">12</span>強み／ベネフィット／SP／USP の整理</a>
+      <a href="#t13"><span class="mn em">13</span>タグライン／キャッチコピー</a>
+      <a href="#t14"><span class="mn em">14</span>商品3分類（売れる品揃え）</a>
+      <a href="#t15"><span class="mn em">15</span>ブランディング設計</a>
+      <a href="#t16"><span class="mn em">16</span>商品ストーリー×体験</a>
+      <a href="#t17"><span class="mn em">17</span>値決め（5つの鉄則）</a>
+      <a href="#magic" class="menu-magic">困ったときの「魔法の一言」</a>
+    </div>
+  </div>
+</div>
+
+<!-- Back to top -->
+<button id="toTop" class="totop" aria-label="上に戻る" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<div id="toast">コピーしました</div>
+
+<script>
+  // ----- 目次メニュー -----
+  const menu = document.getElementById('menu');
+  const menuBtn = document.getElementById('menuBtn');
+  const menuClose = document.getElementById('menuClose');
+  let menuTimer;
+  function openMenu(){
+    clearTimeout(menuTimer);
+    menu.hidden = false;
+    requestAnimationFrame(()=>menu.classList.add('open'));
+    menuBtn.setAttribute('aria-expanded','true');
+    menuClose.focus();
+  }
+  function closeMenu(){
+    menu.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded','false');
+    menuTimer = setTimeout(()=>{ menu.hidden = true; }, 280);
+  }
+  menuBtn.addEventListener('click', openMenu);
+  menuClose.addEventListener('click', closeMenu);
+  menu.addEventListener('click', e=>{ if(e.target === menu) closeMenu(); });
+  document.addEventListener('keydown', e=>{ if(e.key === 'Escape' && !menu.hidden) closeMenu(); });
+
+  // ----- ページ内ジャンプ（#app を独立スクロール領域として動かす） -----
+  const app = document.getElementById('app');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function jumpTo(href){
+    const t = href && document.querySelector(href);
+    if(t) t.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
+  }
+  menu.querySelectorAll('.menu-body a').forEach(a=>a.addEventListener('click', e=>{
+    e.preventDefault();
+    const href = a.getAttribute('href');
+    closeMenu();
+    jumpTo(href);
+  }));
+  document.querySelectorAll('nav.jump a[href^="#"]').forEach(a=>a.addEventListener('click', e=>{
+    e.preventDefault();
+    jumpTo(a.getAttribute('href'));
+  }));
+
+  // ----- 上に戻る -----
+  const toTop = document.getElementById('toTop');
+  toTop.hidden = false;
+  app.addEventListener('scroll', ()=>{ toTop.classList.toggle('show', app.scrollTop > 500); }, {passive:true});
+  toTop.addEventListener('click', ()=>app.scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'}));
+
+  // ----- コピー -----
+  const toast = document.getElementById('toast');
+  let toastTimer;
+  function showToast(){
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>toast.classList.remove('show'),1600);
+  }
+  document.querySelectorAll('.copybtn').forEach(btn=>{
+    btn.addEventListener('click', async ()=>{
+      const pre = btn.parentElement.querySelector('pre.prompt');
+      const text = pre.innerText.trim();
+      try{
+        await navigator.clipboard.writeText(text);
+      }catch(e){
+        const ta=document.createElement('textarea');
+        ta.value=text;document.body.appendChild(ta);ta.select();
+        document.execCommand('copy');document.body.removeChild(ta);
+      }
+      const orig = btn.innerHTML;
+      btn.classList.add('done');
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>コピーしました';
+      showToast();
+      setTimeout(()=>{btn.classList.remove('done');btn.innerHTML=orig;},1600);
+    });
+  });
+</script>
+</body>
+</html>
