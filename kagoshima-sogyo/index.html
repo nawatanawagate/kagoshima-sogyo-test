@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-Ihr2SujkEc/dZEWfAM/WwoYsCJvQcJdvxWRssoLfUD8='; script-src 'sha256-mt5Thhn2ra5HGfuyMjsZ5Jlwt5EbTxeqb3x5GJjmYRY='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-GSobl8MMyYTUPCu4qaEVlSK5Othlv3XodWAfiP8hHEM='; script-src 'sha256-mt5Thhn2ra5HGfuyMjsZ5Jlwt5EbTxeqb3x5GJjmYRY='; img-src data:; base-uri 'none'; form-action 'none'">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%23C2410C'/%3E%3Ctext%20x='16'%20y='22'%20font-size='16'%20text-anchor='middle'%20fill='white'%20font-family='serif'%3EAI%3C/text%3E%3C/svg%3E">
 <title>AI活用プロンプト集｜鹿児島市 創業スキル養成講座 第2回</title>
 <style>
@@ -26,14 +26,14 @@
   .wrap{max-width:760px;margin:0 auto;padding:0 20px}
 
   /* ===== Hero（赤グラデ） ===== */
-  header{background:linear-gradient(135deg,var(--red) 0%,var(--red-d) 100%);color:#fff;padding:50px 0 46px;position:relative;overflow:hidden}
+  header{background:linear-gradient(150deg,#2E2421 0%,#191310 100%);color:#fff;padding:50px 0 46px;position:relative;overflow:hidden}
   header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent)}
-  .eyebrow{font-size:13px;letter-spacing:.16em;color:#FFD9D2;font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:16px}
-  .eyebrow::before{content:"";width:26px;height:2px;background:#fff;display:inline-block}
+  .eyebrow{font-size:13px;letter-spacing:.16em;color:#FF8B79;font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--red);display:inline-block}
   header h1{font-family:var(--serif);font-weight:800;font-size:clamp(28px,7vw,42px);line-height:1.3}
-  header h1 .accent{color:#FFE0B2}
-  header .sub{margin-top:16px;font-size:15px;color:#FCE4E0;max-width:54ch}
-  header .meta{margin-top:22px;font-size:12.5px;color:#F2C3BC;letter-spacing:.04em}
+  header h1 .accent{color:#FF9385}
+  header .sub{margin-top:16px;font-size:15px;color:#D9CBC4;max-width:54ch}
+  header .meta{margin-top:22px;font-size:12.5px;color:#A89890;letter-spacing:.04em}
 
   /* ===== How-to ===== */
   .howto{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px 22px;margin:-28px 0 18px;position:relative;z-index:2}
@@ -69,13 +69,13 @@
   .menu-close:hover{background:var(--bg);border-color:var(--ink)}
   .menu-close svg{width:18px;height:18px}
   .menu-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:10px 12px 24px}
-  .menu-group{font-size:12px;font-weight:700;letter-spacing:.06em;color:#fff;padding:5px 11px;border-radius:7px;display:inline-block;margin:14px 6px 8px;background:var(--red)}
+  .menu-group{font-size:12px;font-weight:700;letter-spacing:.06em;color:#fff;padding:5px 11px;border-radius:7px;display:inline-block;margin:14px 6px 8px;background:var(--ink)}
   .menu-group:first-child{margin-top:6px}
-  .menu-group.bay,.menu-group.em{background:var(--red)}
+  .menu-group.bay,.menu-group.em{background:var(--ink)}
   .menu-body a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);font-size:15px;font-weight:500;padding:11px 12px;border-radius:11px;transition:.15s}
-  .menu-body a:hover,.menu-body a:focus-visible{background:var(--red-soft)}
-  .menu-body a .mn{flex:none;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-family:var(--serif);font-weight:800;font-size:14px;color:#fff;background:var(--red)}
-  .menu-body a .mn.bay,.menu-body a .mn.em{background:var(--red)}
+  .menu-body a:hover,.menu-body a:focus-visible{background:#F7F2EF}
+  .menu-body a .mn{flex:none;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-family:var(--serif);font-weight:800;font-size:14px;color:#fff;background:var(--ink)}
+  .menu-body a .mn.bay,.menu-body a .mn.em{background:var(--ink)}
   .menu-magic{margin-top:12px;border-top:1px dashed var(--line);padding-top:16px !important;font-weight:700 !important;color:var(--red-d) !important}
   a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset:2px}
 
@@ -87,17 +87,17 @@
   @media (prefers-reduced-motion:reduce){.menu,.menu-panel,.totop{transition:none} #app{scroll-behavior:auto}}
 
   /* ===== セクション見出し ===== */
-  .sec{margin:42px 0 4px;display:flex;align-items:center;gap:12px;scroll-margin-top:24px;border-bottom:2px solid var(--red-soft);padding-bottom:9px}
-  .sec .badge{font-family:var(--serif);font-size:13px;font-weight:700;color:#fff;background:var(--red);padding:5px 13px;border-radius:8px;letter-spacing:.04em;white-space:nowrap}
+  .sec{margin:42px 0 4px;display:flex;align-items:center;gap:12px;scroll-margin-top:24px;border-bottom:2px solid var(--line);padding-bottom:9px}
+  .sec .badge{font-family:var(--serif);font-size:13px;font-weight:700;color:#fff;background:var(--ink);padding:5px 13px;border-radius:8px;letter-spacing:.04em;white-space:nowrap}
   .sec h2{font-family:var(--serif);font-size:20px;font-weight:800;color:var(--ink)}
-  .sec.research .badge,.sec.strategy .badge{background:var(--red)}
+  .sec.research .badge,.sec.strategy .badge{background:var(--ink)}
   .lead{font-size:13.5px;color:var(--muted);margin:8px 0 18px;padding-left:2px}
 
   /* ===== カード ===== */
   .card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:18px 18px 20px;margin-bottom:14px;scroll-margin-top:24px}
   .card .head{display:flex;align-items:flex-start;gap:12px;margin-bottom:8px}
-  .card .num{flex:none;font-family:var(--serif);font-weight:800;font-size:15px;width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:#fff;background:var(--red)}
-  .research .num,.strategy .num{background:var(--red)}
+  .card .num{flex:none;font-family:var(--serif);font-weight:800;font-size:15px;width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:#fff;background:var(--ink)}
+  .research .num,.strategy .num{background:var(--ink)}
   .card h3{font-size:17px;font-weight:700;line-height:1.45;color:var(--ink)}
   .card .ref{font-size:12px;color:var(--muted);margin-top:2px;font-weight:500}
   .card .note{font-size:13px;color:var(--muted);margin:8px 0 2px;padding:9px 12px;background:var(--bg);border-radius:9px;border:1px dashed var(--line)}
@@ -105,7 +105,7 @@
   /* ===== プロンプトのラベル ===== */
   .ptitle{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.02em;margin:14px 0 7px;color:var(--muted)}
   .ptitle .tag{padding:3px 11px;border-radius:20px;font-size:11.5px;font-weight:700}
-  .ptitle.simple .tag{background:var(--red-soft);color:var(--red-d)}
+  .ptitle.simple .tag{background:#F0E9E5;color:#6F625B}
   .ptitle.struct .tag{background:var(--red);color:#fff}
 
   /* ===== プロンプト（ダーク／コード調） ===== */
@@ -117,7 +117,7 @@
   .copybtn.done{background:#2E7D32}
 
   /* ===== 精度UP（左罫線） ===== */
-  .tip{margin-top:10px;font-size:12.5px;color:var(--text);background:var(--red-soft);border-left:3px solid var(--red);border-radius:0 8px 8px 0;padding:10px 13px;line-height:1.6;display:flex;gap:9px}
+  .tip{margin-top:10px;font-size:12.5px;color:var(--text);background:#F7F2EF;border-left:3px solid var(--red);border-radius:0 8px 8px 0;padding:10px 13px;line-height:1.6;display:flex;gap:9px}
   .tip .tipl{flex:none;font-size:10.5px;font-weight:700;color:#fff;background:var(--red);padding:2px 7px;border-radius:5px;height:fit-content;margin-top:1px;letter-spacing:.03em}
   .tip b{color:var(--red-d);font-weight:700}
 
