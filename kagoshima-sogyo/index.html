@@ -5,25 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-E6rd4d31ZTbuEUwn5AQdE+4zekzESSitAJoy6FfGJHk='; script-src 'sha256-EK/yEd74OeHcowW02ap6tc3t6sZHo5Av9t5NN27f0aM='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-bKcPCF44dJfeV364T3gnNPABQXXuEZIQJYPugmz4fFc='; script-src 'sha256-EK/yEd74OeHcowW02ap6tc3t6sZHo5Av9t5NN27f0aM='; img-src data:; base-uri 'none'; form-action 'none'">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%23C2410C'/%3E%3Ctext%20x='16'%20y='22'%20font-size='16'%20text-anchor='middle'%20fill='white'%20font-family='serif'%3EAI%3C/text%3E%3C/svg%3E">
 <title>AI活用プロンプト集｜鹿児島市 創業スキル養成講座 第2回</title>
 <style>
   :root{
     --sans:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Noto Sans JP",Meiryo,sans-serif;
     --serif:"Hiragino Mincho ProN","Hiragino Mincho Pro","Yu Mincho",YuMincho,"Noto Serif JP",serif;
-    --paper:#FBF7F1;
-    --paper2:#F3EADE;
-    --ink:#211C17;
-    --muted:#6E6358;
-    --line:#E4D9C9;
+    --paper:#F1F6FB;
+    --paper2:#E6EFF8;
+    --ink:#16273C;
+    --muted:#5B6A7B;
+    --line:#D8E4F0;
     --card:#FFFFFF;
-    --ember:#C2410C;      /* 桜島 */
-    --ember-soft:#FBE7DC;
-    --bay:#0F5257;        /* 錦江湾 */
-    --bay-soft:#DCEBEA;
-    --gold:#B45309;
-    --shadow:0 1px 2px rgba(33,28,23,.04),0 8px 24px rgba(33,28,23,.06);
+    --ember:#1F83D4;      /* メインブルー */
+    --ember-soft:#DDEDFB;
+    --bay:#13518A;        /* ディープブルー */
+    --bay-soft:#DBE8F6;
+    --gold:#1769AE;
+    --shadow:0 1px 2px rgba(20,40,66,.04),0 8px 24px rgba(20,40,66,.06);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
@@ -46,20 +46,20 @@
   /* ===== Header ===== */
   header{
     background:
-      radial-gradient(120% 90% at 85% -10%, rgba(194,65,12,.18), transparent 60%),
-      radial-gradient(110% 90% at 5% 0%, rgba(15,82,87,.16), transparent 55%),
-      #1C1812;
-    color:#FBF7F1;
+      radial-gradient(120% 90% at 85% -10%, rgba(31,131,212,.22), transparent 60%),
+      radial-gradient(110% 90% at 5% 0%, rgba(19,81,138,.20), transparent 55%),
+      #102338;
+    color:#EAF2FB;
     padding:54px 0 46px;
     position:relative;
     overflow:hidden;
   }
   header::after{
     content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
-    background:linear-gradient(90deg,transparent,rgba(251,247,241,.35),transparent);
+    background:linear-gradient(90deg,transparent,rgba(225,238,251,.4),transparent);
   }
   .eyebrow{
-    font-size:13px;letter-spacing:.18em;color:#E8B89E;font-weight:700;
+    font-size:13px;letter-spacing:.18em;color:#9FCBF0;font-weight:700;
     display:flex;align-items:center;gap:10px;margin-bottom:18px;
   }
   .eyebrow::before{content:"";width:26px;height:2px;background:var(--ember);display:inline-block}
@@ -67,9 +67,9 @@
     font-family:var(--serif);font-weight:800;
     font-size:clamp(28px,7vw,42px);line-height:1.3;letter-spacing:.01em;
   }
-  header h1 .accent{color:#F2A57C}
-  header .sub{margin-top:18px;font-size:15px;color:#D8CDBE;max-width:54ch}
-  header .meta{margin-top:24px;font-size:12.5px;color:#A89A88;letter-spacing:.04em}
+  header h1 .accent{color:#7EC2F0}
+  header .sub{margin-top:18px;font-size:15px;color:#C2D4E6;max-width:54ch}
+  header .meta{margin-top:24px;font-size:12.5px;color:#8298AE;letter-spacing:.04em}
 
   /* ===== How-to ===== */
   .howto{
@@ -124,26 +124,26 @@
     display:inline-flex;align-items:center;gap:7px;cursor:pointer;
     font-family:inherit;font-size:13px;font-weight:700;color:#fff;background:var(--ember);
     border:none;padding:9px 16px 9px 13px;border-radius:999px;
-    box-shadow:0 4px 14px rgba(28,24,18,.30);transition:transform .18s,background .2s;
+    box-shadow:0 4px 14px rgba(14,28,46,.30);transition:transform .18s,background .2s;
   }
-  .menufab:hover{background:#A8370A;transform:translateY(-1px)}
+  .menufab:hover{background:#1568B0;transform:translateY(-1px)}
   .menufab svg{width:17px;height:17px}
 
   /* ===== 精度UPのコツ ===== */
   .tip{display:flex;gap:10px;background:var(--bay-soft);border-radius:12px;
-    padding:12px 14px;margin-top:14px;font-size:13px;line-height:1.7;color:#27433F}
+    padding:12px 14px;margin-top:14px;font-size:13px;line-height:1.7;color:#1E3A52}
   .tip .tipl{flex:none;font-size:11px;font-weight:700;color:#fff;background:var(--bay);
     padding:3px 8px;border-radius:6px;height:fit-content;margin-top:1px;letter-spacing:.03em}
   .tip b{color:var(--bay);font-weight:700}
 
   /* ===== Menu（サイドドロワー） ===== */
-  .menu{position:fixed;inset:0;z-index:60;background:rgba(28,24,18,.5);
+  .menu{position:fixed;inset:0;z-index:60;background:rgba(14,28,46,.5);
     opacity:0;transition:opacity .26s ease}
   .menu.open{opacity:1}
   .menu-panel{
     position:absolute;top:0;right:0;bottom:0;
     width:min(86vw,360px);background:var(--card);
-    box-shadow:0 0 60px rgba(28,24,18,.45);
+    box-shadow:0 0 60px rgba(14,28,46,.45);
     border-radius:20px 0 0 20px;
     display:flex;flex-direction:column;
     transform:translateX(102%);transition:transform .3s cubic-bezier(.33,1,.68,1);
@@ -191,7 +191,7 @@
     position:fixed;right:16px;bottom:18px;z-index:50;
     width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;
     background:var(--ink);color:#fff;display:grid;place-items:center;
-    box-shadow:0 6px 20px rgba(28,24,18,.32);
+    box-shadow:0 6px 20px rgba(14,28,46,.32);
     opacity:0;pointer-events:none;transform:translateY(10px);
     transition:opacity .25s ease,transform .25s ease,background .2s;
   }
@@ -237,7 +237,7 @@
     letter-spacing:.04em;margin:18px 0 8px;color:var(--muted);
   }
   .ptitle .tag{padding:3px 10px;border-radius:6px;font-size:11.5px;color:#fff}
-  .ptitle.simple .tag{background:#7A8B5A}
+  .ptitle.simple .tag{background:#3E92CD}
   .ptitle.struct .tag{background:var(--gold)}
 
   .promptbox{position:relative}
@@ -260,13 +260,13 @@
   .copybtn svg{width:16px;height:16px}
 
   /* ===== Magic phrases ===== */
-  .magic{background:#1C1812;color:#F5EFE6;border-radius:18px;padding:28px 24px;margin:44px 0 0;scroll-margin-top:24px}
+  .magic{background:#102338;color:#EAF2FB;border-radius:18px;padding:28px 24px;margin:44px 0 0;scroll-margin-top:24px}
   .magic h2{font-family:var(--serif);font-size:19px;margin-bottom:6px}
-  .magic p.lead{font-size:13.5px;color:#C9BCab;margin-bottom:18px}
+  .magic p.lead{font-size:13.5px;color:#AEC2D6;margin-bottom:18px}
   .magic .m{display:flex;gap:12px;padding:12px 0;border-top:1px solid rgba(255,255,255,.1);align-items:flex-start}
   .magic .m:first-of-type{border-top:none}
-  .magic .m .k{flex:none;font-size:12.5px;font-weight:700;color:#F2A57C;width:84px}
-  .magic .m .v{font-size:13.5px;color:#E6DCce}
+  .magic .m .k{flex:none;font-size:12.5px;font-weight:700;color:#7EC2F0;width:84px}
+  .magic .m .v{font-size:13.5px;color:#D2DFEC}
 
   footer{padding:40px 20px 56px;text-align:center}
   footer .disc{font-size:12px;color:var(--muted);max-width:60ch;margin:0 auto 16px;line-height:1.7}
@@ -301,7 +301,7 @@
   <div class="howto">
     <h2><span class="dot"></span>AIを使う3つのコツ</h2>
     <ol>
-      <li><span><b>【　】の中を自分の事業に書き換える。</b>　オレンジ色の<span class="em">【業種】【地域】【特徴】</span>を、打つ前に必ず自分の言葉に置き換えます。</span></li>
+      <li><span><b>【　】の中を自分の事業に書き換える。</b>　青色の<span class="em">【業種】【地域】【特徴】</span>を、打つ前に必ず自分の言葉に置き換えます。</span></li>
       <li><span><b>会話は「続けて」つなげる。</b>　3C → SWOT → クロスSWOT のように、同じ会話の中で続けて質問すると、AIが文脈を引き継ぎます。</span></li>
       <li class="warn"><span><b>数字は鵜呑みにしない（最重要）。</b>　AIはそれっぽい数字を作ることがあります。「その数字、1日あたり何件？」「出典は？」と必ず確認を。</span></li>
     </ol>
