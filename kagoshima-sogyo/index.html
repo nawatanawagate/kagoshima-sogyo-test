@@ -291,7 +291,7 @@
     <div class="eyebrow">鹿児島市 創業スキル養成講座 第2回</div>
     <h1>マーケティング<br><span class="accent">AI活用</span>プロンプト集</h1>
     <p class="sub">スライドのページ順に、そのまま使えるプロンプトを並べました。お使いのAI（Gemini／ChatGPT／Claude）に貼り付けてお使いください。</p>
-    <div class="meta">簡易プロンプト ＋ 構造化指示プロンプト ／ 全19テーマ</div>
+    <div class="meta">簡易プロンプト ＋ 構造化指示プロンプト ／ 全20テーマ</div>
   </div>
 </header>
 
@@ -384,9 +384,39 @@
     <div class="tip"><span class="tipl">精度UP</span><div><b>町名まで</b>入れると商圏が変わります。客層の仮説（例：近隣会社員のランチ需要）や<b>競合店の名前・特徴</b>も書くと、立ち位置がはっきりします。</div></div>
   </article>
 
-  <!-- 3 SWOT -->
+  <!-- 3 競合調査 -->
   <article class="card research" id="t3">
-    <div class="head"><div class="num">3</div><div><h3>SWOT分析</h3><div class="ref">スライド：強み・弱み・機会・脅威に整理</div></div></div>
+    <div class="head"><div class="num">3</div><div><h3>競合調査</h3><div class="ref">スライド：3C分析（競合）の深掘り</div></div></div>
+    <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
+    <div class="promptbox"><pre class="prompt">鹿児島市で「<span class="fill">【業種】</span>」を創業予定です。
+近隣のライバル店を3〜5社挙げ、それぞれの人気商品・強み・弱み・口コミを調べてください。</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="ptitle struct"><span class="tag">構造化</span>精度を上げたいとき</div>
+    <div class="promptbox"><pre class="prompt">あなたは競合リサーチの専門家です。
+鹿児島市<span class="fill">【○○エリア】</span>で「<span class="fill">【業種】</span>」（規模：<span class="fill">【記入】</span>）を創業予定です。
+地域・業種・規模が近いライバルを3〜5社洗い出し、分析してください。
+
+■ 各社について調べる項目
+- 競合名（店名・所在エリア）
+- 人気商品・看板メニュー
+- 強み ／ 弱み
+- ポジティブな口コミ ／ ネガティブな口コミ（具体例）
+- どんな広報・集客（SNS・チラシ・Googleマップ・広告 など）
+- インサイト（その店の成功・失敗から私が学べること）
+
+■ ルール
+- 実在の店・公開情報（公式サイト・Googleマップ・口コミ・SNS）をもとに。出典を明記
+- 確認できないことは「不明」と書く（憶測で埋めない）
+
+■ 出力形式
+競合比較表（上記の項目を列に）＋ 最後に「私が狙うべき空白・差別化のヒント」</pre>
+    <button class="copybtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>コピーする</button></div>
+    <div class="tip"><span class="tipl">精度UP</span><div><b>町名・規模（席数や価格帯）</b>を具体的に。気になる<b>競合店の名前</b>を挙げると必ず分析に含めます。口コミは「Googleマップの実例」を求めると精度が上がります。</div></div>
+  </article>
+
+  <!-- 4 SWOT -->
+  <article class="card research" id="t4">
+    <div class="head"><div class="num">4</div><div><h3>SWOT分析</h3><div class="ref">スライド：強み・弱み・機会・脅威に整理</div></div></div>
     <div class="note">前の「3C分析」の回答に続けて、同じ会話の中で打ってください。</div>
     <div class="ptitle simple"><span class="tag">簡易</span>3C分析の続きで打つ</div>
     <div class="promptbox"><pre class="prompt">前回の3C分析の結果をもとに、続けてSWOT分析を行ってください。</pre>
@@ -411,9 +441,9 @@
     <div class="tip"><span class="tipl">精度UP</span><div>3C分析に続けて聞くのがコツ。<b>自分の経験年数・資格・人脈・自己資金</b>など事実を具体的に渡すほど、的を射た強み・弱みになります。</div></div>
   </article>
 
-  <!-- 4 クロスSWOT -->
-  <article class="card research" id="t4">
-    <div class="head"><div class="num">4</div><div><h3>クロスSWOT分析</h3><div class="ref">スライド：4つの戦略を導く</div></div></div>
+  <!-- 5 クロスSWOT -->
+  <article class="card research" id="t5">
+    <div class="head"><div class="num">5</div><div><h3>クロスSWOT分析</h3><div class="ref">スライド：4つの戦略を導く</div></div></div>
     <div class="note">前の「SWOT分析」の回答に続けて、同じ会話の中で打ってください。</div>
     <div class="ptitle simple"><span class="tag">簡易</span>SWOTの続きで打つ</div>
     <div class="promptbox"><pre class="prompt">前回のSWOT分析の結果をもとに、続けてクロスSWOT分析を行ってください。</pre>
@@ -438,9 +468,9 @@
     <div class="tip"><span class="tipl">精度UP</span><div><b>何を最優先したいか（売上重視／低リスク重視 など）</b>を一言添えると、戦略の優先順位が自分の状況に合います。</div></div>
   </article>
 
-  <!-- 5 市場規模 -->
-  <article class="card research" id="t5">
-    <div class="head"><div class="num">5</div><div><h3>市場規模の把握</h3><div class="ref">スライド：市場把握の重要性／統計情報サイト</div></div></div>
+  <!-- 6 市場規模 -->
+  <article class="card research" id="t6">
+    <div class="head"><div class="num">6</div><div><h3>市場規模の把握</h3><div class="ref">スライド：市場把握の重要性／統計情報サイト</div></div></div>
     <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
     <div class="promptbox"><pre class="prompt">鹿児島市で「<span class="fill">【業種】</span>」の市場規模は、年間どのくらいですか？
 公的な統計をもとに、根拠と一緒に教えてください。</pre>
@@ -466,9 +496,9 @@
     <div class="tip"><span class="tipl">精度UP</span><div><b>範囲を明示</b>（鹿児島市／県／全国）。BtoBかBtoCか、<b>想定する単価帯</b>も書くと、推計の前提がぶれません。</div></div>
   </article>
 
-  <!-- 6 売上予測 -->
-  <article class="card research" id="t6">
-    <div class="head"><div class="num">6</div><div><h3>売上予測</h3><div class="ref">スライド：統計情報を用いた売上予測</div></div></div>
+  <!-- 7 売上予測 -->
+  <article class="card research" id="t7">
+    <div class="head"><div class="num">7</div><div><h3>売上予測</h3><div class="ref">スライド：統計情報を用いた売上予測</div></div></div>
     <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
     <div class="promptbox"><pre class="prompt">鹿児島市・天文館で「<span class="fill">【業種】</span>」を開く場合の、現実的な年間売上予測を、
 ①お客様の数 × ②シェア × ③客単価 × ④来店頻度 で計算してください。</pre>
@@ -492,9 +522,9 @@
     <div class="tip"><span class="tipl">精度UP</span><div><b>席数・営業日数・想定客単価・1日の想定客数</b>など分かる数字を渡すほど現実的に。「強気」と「堅め」の両方を頼むと、幅で判断できます。</div></div>
   </article>
 
-  <!-- 7 出店場所 -->
-  <article class="card research" id="t7">
-    <div class="head"><div class="num">7</div><div><h3>出店場所の候補探し</h3><div class="ref">スライド：最適な出店場所候補探し</div></div></div>
+  <!-- 8 出店場所 -->
+  <article class="card research" id="t8">
+    <div class="head"><div class="num">8</div><div><h3>出店場所の候補探し</h3><div class="ref">スライド：最適な出店場所候補探し</div></div></div>
     <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
     <div class="promptbox"><pre class="prompt">鹿児島市内で「<span class="fill">【業種】</span>」の出店候補地を、公的データをもとに3つ提案してください。
 それぞれの根拠（人口・競合の少なさなど）も教えてください。</pre>
@@ -522,9 +552,9 @@
     <div class="tip"><span class="tipl">精度UP</span><div><b>外せない条件（家賃の上限・駅近/駐車場・ターゲットの居住地）</b>を書く。気になる候補エリアがあれば挙げると、比較が具体的になります。</div></div>
   </article>
 
-  <!-- 8 STP -->
-  <article class="card research" id="t8">
-    <div class="head"><div class="num">8</div><div><h3>STP・ポジショニングマップ</h3><div class="ref">スライド：勝てる空白地帯を探す</div></div></div>
+  <!-- 9 STP -->
+  <article class="card research" id="t9">
+    <div class="head"><div class="num">9</div><div><h3>STP・ポジショニングマップ</h3><div class="ref">スライド：勝てる空白地帯を探す</div></div></div>
     <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
     <div class="promptbox"><pre class="prompt">鹿児島市で「<span class="fill">【業種】</span>」を創業します。
 競合と差がつくポジショニングマップの2軸を、3案提案してください。</pre>
@@ -559,9 +589,9 @@
   </div>
   <p class="lead">調べた事実をもとに、ターゲット・価値・価格まで、商品の中身を固めます。</p>
 
-  <!-- 9 ターゲット -->
-  <article class="card strategy" id="t9">
-    <div class="head"><div class="num">9</div><div><h3>ターゲット設定</h3><div class="ref">スライド：見込み客を設定する／ターゲティングシート</div></div></div>
+  <!-- 10 ターゲット -->
+  <article class="card strategy" id="t10">
+    <div class="head"><div class="num">10</div><div><h3>ターゲット設定</h3><div class="ref">スライド：見込み客を設定する／ターゲティングシート</div></div></div>
     <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
     <div class="promptbox"><pre class="prompt">鹿児島市で「<span class="fill">【業種】</span>」を始めます。
 理想のお客様（ターゲット）の候補を、3パターン提案してください。</pre>
@@ -589,9 +619,9 @@
     <div class="tip"><span class="tipl">精度UP</span><div><b>商品・価格帯・提供価値</b>を具体的に。「ぜひ来てほしい人」と「無理に狙わない人」を添えると、ターゲット候補が鋭くなります。</div></div>
   </article>
 
-  <!-- 10 ペルソナ -->
-  <article class="card strategy" id="t10">
-    <div class="head"><div class="num">10</div><div><h3>ペルソナ作り</h3><div class="ref">スライド：ペルソナシート例</div></div></div>
+  <!-- 11 ペルソナ -->
+  <article class="card strategy" id="t11">
+    <div class="head"><div class="num">11</div><div><h3>ペルソナ作り</h3><div class="ref">スライド：ペルソナシート例</div></div></div>
     <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
     <div class="promptbox"><pre class="prompt">ターゲットが「<span class="fill">【ターゲットの説明】</span>」のとき、
 その代表となる一人のお客様（ペルソナ）を、名前つきで具体的に描いてください。</pre>
@@ -622,8 +652,8 @@
     <div class="tip"><span class="tipl">精度UP</span><div>ターゲットの説明を<b>年代・地域・暮らし向き</b>まで具体的に。<b>商品への期待・予算・あると嬉しいサービス</b>まで描くと、商品づくりや値決めにそのまま使えます。</div></div>
   </article>
 
-  <article class="card strategy" id="t11">
-    <div class="head"><div class="num">11</div><div><h3>純顧客価値</h3><div class="ref">スライド：購入の決め手「純顧客価値」</div></div></div>
+  <article class="card strategy" id="t12">
+    <div class="head"><div class="num">12</div><div><h3>純顧客価値</h3><div class="ref">スライド：購入の決め手「純顧客価値」</div></div></div>
     <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
     <div class="promptbox"><pre class="prompt">「<span class="fill">【商品名・特徴】</span>」について、お客様が「期待する価値」と「許容できるコスト」を洗い出し、
 選ばれる理由（純顧客価値）を高める方法を提案してください。</pre>
@@ -647,8 +677,8 @@
     <div class="tip"><span class="tipl">精度UP</span><div><b>価格・ターゲット・買う前の不安</b>を具体的に。「お金以外のコスト（手間・時間・不安）」まで挙げると、値下げ以外で選ばれる打ち手が見つかります。</div></div>
   </article>
 
-  <article class="card strategy" id="t12">
-    <div class="head"><div class="num">12</div><div><h3>強みをベネフィットに翻訳</h3><div class="ref">スライド：強みではなく、ベネフィットを</div></div></div>
+  <article class="card strategy" id="t13">
+    <div class="head"><div class="num">13</div><div><h3>強みをベネフィットに翻訳</h3><div class="ref">スライド：強みではなく、ベネフィットを</div></div></div>
     <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
     <div class="promptbox"><pre class="prompt">私の事業の強みは「<span class="fill">【強み】</span>」です。
 これを、お客様目線の「ベネフィット（あなたは○○になれる）」に翻訳してください。</pre>
@@ -673,8 +703,8 @@
     <div class="tip"><span class="tipl">精度UP</span><div>強みは<b>事実で具体的に</b>（例「国産小麦100%」「元〇〇で15年」）。<b>お客様の悩み</b>も添えると、刺さる言葉に翻訳されます。</div></div>
   </article>
 
-  <article class="card strategy" id="t13">
-    <div class="head"><div class="num">13</div><div><h3>強み／ベネフィット／SP／USP の整理</h3><div class="ref">スライド：4つの違い</div></div></div>
+  <article class="card strategy" id="t14">
+    <div class="head"><div class="num">14</div><div><h3>強み／ベネフィット／SP／USP の整理</h3><div class="ref">スライド：4つの違い</div></div></div>
     <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
     <div class="promptbox"><pre class="prompt">私の事業（<span class="fill">【業種・特徴】</span>）について、
 強み → ベネフィット → セールスポイント → USP の順に整理してください。</pre>
@@ -698,8 +728,8 @@
     <div class="tip"><span class="tipl">精度UP</span><div><b>競合がやっていないこと</b>を具体的に書く。曖昧だと平凡なUSPになります。<b>実績や数字</b>があれば必ず入れましょう。</div></div>
   </article>
 
-  <article class="card strategy" id="t14">
-    <div class="head"><div class="num">14</div><div><h3>タグライン／キャッチコピー</h3><div class="ref">スライド：中身と言葉（USP→タグライン）</div></div></div>
+  <article class="card strategy" id="t15">
+    <div class="head"><div class="num">15</div><div><h3>タグライン／キャッチコピー</h3><div class="ref">スライド：中身と言葉（USP→タグライン）</div></div></div>
     <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
     <div class="promptbox"><pre class="prompt">私のお店のUSPは「<span class="fill">【USP】</span>」です。
 長く使えるタグライン（ブランドの旗印）を5案つくってください。</pre>
@@ -729,8 +759,8 @@
     <div class="tip"><span class="tipl">精度UP</span><div><b>USP・ターゲット・店の雰囲気（高級／親しみ など）</b>を渡す。使いたい言葉やNGワードがあれば指定すると、精度が上がります。</div></div>
   </article>
 
-  <article class="card strategy" id="t15">
-    <div class="head"><div class="num">15</div><div><h3>商品3分類（売れる品揃え）</h3><div class="ref">スライド：商品づくりの商品3分類</div></div></div>
+  <article class="card strategy" id="t16">
+    <div class="head"><div class="num">16</div><div><h3>商品3分類（売れる品揃え）</h3><div class="ref">スライド：商品づくりの商品3分類</div></div></div>
     <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
     <div class="promptbox"><pre class="prompt">「<span class="fill">【業種】</span>」の品揃えを、お試し商品・定番商品・まとめ買い／ギフト商品の
 3分類で具体的に提案してください。</pre>
@@ -755,8 +785,8 @@
     <div class="tip"><span class="tipl">精度UP</span><div><b>主力商品・価格帯・原価感</b>を渡す。「客単価をいくら上げたいか」を書くと、まとめ買い・ギフトの設計が具体的になります。</div></div>
   </article>
 
-  <article class="card strategy" id="t16">
-    <div class="head"><div class="num">16</div><div><h3>ブランディング設計</h3><div class="ref">スライド：ブランディングの重要性</div></div></div>
+  <article class="card strategy" id="t17">
+    <div class="head"><div class="num">17</div><div><h3>ブランディング設計</h3><div class="ref">スライド：ブランディングの重要性</div></div></div>
     <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
     <div class="promptbox"><pre class="prompt">「<span class="fill">【業種・特徴】</span>」のお店のブランドコンセプトを考えてください。
 理念・USP・お客様への約束を、短い言葉でまとめてください。</pre>
@@ -783,8 +813,8 @@
     <div class="tip"><span class="tipl">精度UP</span><div><b>理念・始めた理由・大切にしたい価値観</b>を書く。参考にしたいお店や世界観があれば挙げると、ブランドの方向性が定まります。</div></div>
   </article>
 
-  <article class="card strategy" id="t17">
-    <div class="head"><div class="num">17</div><div><h3>商品ストーリー×体験</h3><div class="ref">スライド：イメージ価値を高める</div></div></div>
+  <article class="card strategy" id="t18">
+    <div class="head"><div class="num">18</div><div><h3>商品ストーリー×体験</h3><div class="ref">スライド：イメージ価値を高める</div></div></div>
     <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
     <div class="promptbox"><pre class="prompt">「<span class="fill">【商品名・特徴】</span>」に、お客様の心に響く商品ストーリーをつけてください。
 歴史・こだわり・人のドラマなどの切り口で3案お願いします。</pre>
@@ -811,8 +841,8 @@
     <div class="tip"><span class="tipl">精度UP</span><div><b>商品の背景（産地・製法・人の物語・歴史）</b>を具体的に。実話の素材を渡すほど、共感されるストーリーになります。</div></div>
   </article>
 
-  <article class="card strategy" id="t18">
-    <div class="head"><div class="num">18</div><div><h3>値決め</h3><div class="ref">スライド：商品の値決め 5つの鉄則</div></div></div>
+  <article class="card strategy" id="t19">
+    <div class="head"><div class="num">19</div><div><h3>値決め</h3><div class="ref">スライド：商品の値決め 5つの鉄則</div></div></div>
     <div class="ptitle simple"><span class="tag">STEP1</span>お客様の予算を知る</div>
     <div class="promptbox"><pre class="prompt">「<span class="fill">【商品名・特徴】</span>」を買うお客様は、いくらなら買いますか？
 ターゲットが許せる「予算」の目安と、その人が重視する「品質」「量」を、客層別に推測してください。</pre>
@@ -853,8 +883,8 @@
     <div class="tip"><span class="tipl">精度UP</span><div>STEP1→2→3の順に<b>同じ会話で続けて</b>聞くのがコツ。<b>原価・狙う客層の予算感・競合価格（分かる範囲）</b>を渡すほど、松竹梅が現実的な価格になります。データから根拠づけたいときは「構造化」版を。</div></div>
   </article>
 
-  <article class="card strategy" id="t19">
-    <div class="head"><div class="num">19</div><div><h3>4P＋4Cにまとめる（仕上げ）</h3><div class="ref">スライド：4P＋4Cにまとめる／売れる仕組みシート</div></div></div>
+  <article class="card strategy" id="t20">
+    <div class="head"><div class="num">20</div><div><h3>4P＋4Cにまとめる（仕上げ）</h3><div class="ref">スライド：4P＋4Cにまとめる／売れる仕組みシート</div></div></div>
     <div class="ptitle simple"><span class="tag">簡易</span>まずこれを打つ</div>
     <div class="promptbox"><pre class="prompt">これまで決めた内容をもとに、私の事業を「マーケティングの4P＋4C」にまとめてください。
 （4P＝製品・価格・流通・販促／4C＝顧客価値・顧客の負担・利便性・コミュニケーション）</pre>
@@ -917,24 +947,25 @@
       <div class="menu-group bay">② リサーチ編</div>
       <a href="#t1"><span class="mn bay">1</span>PEST分析</a>
       <a href="#t2"><span class="mn bay">2</span>3C分析</a>
-      <a href="#t3"><span class="mn bay">3</span>SWOT分析</a>
-      <a href="#t4"><span class="mn bay">4</span>クロスSWOT分析</a>
-      <a href="#t5"><span class="mn bay">5</span>市場規模の把握</a>
-      <a href="#t6"><span class="mn bay">6</span>売上予測</a>
-      <a href="#t7"><span class="mn bay">7</span>出店場所の候補探し</a>
-      <a href="#t8"><span class="mn bay">8</span>STP・ポジショニングマップ</a>
+      <a href="#t3"><span class="mn bay">3</span>競合調査</a>
+      <a href="#t4"><span class="mn bay">4</span>SWOT分析</a>
+      <a href="#t5"><span class="mn bay">5</span>クロスSWOT分析</a>
+      <a href="#t6"><span class="mn bay">6</span>市場規模の把握</a>
+      <a href="#t7"><span class="mn bay">7</span>売上予測</a>
+      <a href="#t8"><span class="mn bay">8</span>出店場所の候補探し</a>
+      <a href="#t9"><span class="mn bay">9</span>STP・ポジショニングマップ</a>
       <div class="menu-group em">③ 戦略編</div>
-      <a href="#t9"><span class="mn em">9</span>ターゲット設定</a>
-      <a href="#t10"><span class="mn em">10</span>ペルソナ作り</a>
-      <a href="#t11"><span class="mn em">11</span>純顧客価値</a>
-      <a href="#t12"><span class="mn em">12</span>強みをベネフィットに翻訳</a>
-      <a href="#t13"><span class="mn em">13</span>強み／ベネフィット／SP／USP の整理</a>
-      <a href="#t14"><span class="mn em">14</span>タグライン／キャッチコピー</a>
-      <a href="#t15"><span class="mn em">15</span>商品3分類（売れる品揃え）</a>
-      <a href="#t16"><span class="mn em">16</span>ブランディング設計</a>
-      <a href="#t17"><span class="mn em">17</span>商品ストーリー×体験</a>
-      <a href="#t18"><span class="mn em">18</span>値決め</a>
-      <a href="#t19"><span class="mn em">19</span>4P＋4Cにまとめる</a>
+      <a href="#t10"><span class="mn em">10</span>ターゲット設定</a>
+      <a href="#t11"><span class="mn em">11</span>ペルソナ作り</a>
+      <a href="#t12"><span class="mn em">12</span>純顧客価値</a>
+      <a href="#t13"><span class="mn em">13</span>強みをベネフィットに翻訳</a>
+      <a href="#t14"><span class="mn em">14</span>強み／ベネフィット／SP／USP の整理</a>
+      <a href="#t15"><span class="mn em">15</span>タグライン／キャッチコピー</a>
+      <a href="#t16"><span class="mn em">16</span>商品3分類（売れる品揃え）</a>
+      <a href="#t17"><span class="mn em">17</span>ブランディング設計</a>
+      <a href="#t18"><span class="mn em">18</span>商品ストーリー×体験</a>
+      <a href="#t19"><span class="mn em">19</span>値決め</a>
+      <a href="#t20"><span class="mn em">20</span>4P＋4Cにまとめる</a>
       <a href="#magic" class="menu-magic">困ったときの「魔法の一言」</a>
     </div>
   </div>
